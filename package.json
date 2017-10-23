@@ -1,0 +1,27 @@
+{
+  "name": "coffeemonkey.net",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caspian311/coffeemonkey.net.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caspian311/coffeemonkey.net/issues"
+  },
+  "homepage": "https://github.com/caspian311/coffeemonkey.net#readme"
+}
