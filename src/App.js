@@ -1,59 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+var axios = require('axios');
+
+function Movie(props) {
+  return (
+    <li>{props.title} - {props.releaseDate}</li>
+  );
+}
 
 class App extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: []
+    };
+  }
 
-    const user = {
-      firstName: 'Matt',
-      lastName: 'Todd'
-    }
+  componentDidMount() {
+    this.populateMovies();
+  }
 
-    function formatName(user) {
-      return user.firstName + ' ' + user.lastName;
-    }
-
-    function Welcome(props) {
-      return <h1>Hello, {props.name}!</h1>
-    }
-
-    class Clock extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {date: new Date()}
-      }
-
-      componentDidMount() {
-        this.timeId = setInterval(
-          () => this.tick(),
-          1000
-        );
-      }
-
-      componentWillUnmount() {
-        clearInterval(this.timeId);
-      }
-
-      tick() {
-        this.setState({
-          date: new Date()
+  populateMovies() {
+    axios.get('http://localhost:4567/').then(function(response) {
+      this.setState(() => {
+        let movies = response.data['movies'].map((movie, index) => {
+          return (
+            <Movie key={index} title={movie.title} releaseDate={movie.release_date} />
+          );
         });
-      }
+        return {
+          movies: movies
+        };
+      });
+    }.bind(this));
+  }
 
-      render() {
-        return (
-          <h3>The time is: {this.state.date.toLocaleTimeString()}</h3>
-        );
-      }
-    }
-
+  render() {
     return (
       <div>
-        <Welcome name="Matt" />
-        <Welcome name="Abbi" />
-        <Welcome name="Caleb" />
-        <Clock />
+        <h3>Favorite Movies:</h3>
+        <ul>
+          {this.state.movies}
+        </ul>
       </div>
     );
   }
