@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-var axios = require('axios');
+import Api from './api'
 
 function Movie(props) {
   return (
@@ -21,15 +21,16 @@ class App extends Component {
   }
 
   populateMovies() {
-    axios.get('http://localhost:4567/').then(function(response) {
+    Api.getMovies().then(function(movies) {
       this.setState(() => {
-        let movies = response.data['movies'].map((movie, index) => {
+        let m = movies.map((movie, index) => {
           return (
             <Movie key={index} title={movie.title} releaseDate={movie.release_date} />
           );
         });
+
         return {
-          movies: movies
+          movies: m
         };
       });
     }.bind(this));
