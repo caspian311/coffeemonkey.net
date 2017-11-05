@@ -35,6 +35,7 @@
     "react": "^16.0.0",
     "react-dev-utils": "^4.1.0",
     "react-dom": "^16.0.0",
+    "s3-deploy": "^0.7.6",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.5.9",
@@ -46,7 +47,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy": "./node_modules/.bin/s3-deploy './build/**' --cwd './build/' --bucket coffeemonkey.net"
   },
   "jest": {
     "collectCoverageFrom": [

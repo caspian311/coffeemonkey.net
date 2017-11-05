@@ -26,3 +26,24 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.banner {
+  border-bottom: 1px solid black;
+  height: 150px;
+}
+
+.banner img {
+  display: inline-block;
+  height: 150px;
+}
+
+.banner h1 {
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+}
+
+#root {
+  clear: both;
+}
+
