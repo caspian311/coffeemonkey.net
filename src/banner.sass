@@ -1,0 +1,53 @@
+$dark-brown: #423413
+
+$break-small: 320px
+$break-large: 1200px
+$break-medium: 768px
+
+$banner-height: 60px
+@media (max-width: $break-medium)
+  $banner-height: 80px
+@media (max-width: $break-large)
+  $banner-height: 80px
+
+.banner
+  background: #F2C052
+  border-bottom: 1px solid $dark-brown
+  margin-bottom: 10px
+  @media (max-width: $break-medium)
+    margin-bottom: 0
+  height: $banner-height
+  padding: 0 10px 0 10px
+
+  .logo
+    img
+      float: left
+      height: $banner-height
+
+    .title
+      color: #423413
+      display: inline
+      float: left
+      font-size: 25px
+      padding: 15px 10px
+      @media (max-width: $break-small)
+        font-size: 18px
+        padding: 20px 10px
+      line-height: 0
+      vertical-align: middle
+
+  ul.actions
+    @media (max-width: $break-small)
+      display: none
+    float: right
+    list-style-type: none
+    li
+      display: inline
+      padding-left: 10px
+
+  &:after
+    clear: both
+    content: ''
+    display: block
+
+

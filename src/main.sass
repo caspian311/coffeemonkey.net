@@ -1,0 +1,28 @@
+$dark-brown: #423413
+
+$break-small: 320px
+$break-medium: 768px
+$break-large: 1200px
+
+.main
+  margin: auto
+  @media (max-width: $break-large)
+    max-width: 500px
+  @media (max-width: $break-medium)
+    max-width: 100%
+
+  .container
+    @media (max-width: $break-large)
+      border-radius: 2px
+      border: solid 1px $dark-brown
+    @media (max-width: $break-medium)
+      border: 0
+    @media (max-width: $break-small)
+      border: 0
+
+    .title
+      border-bottom: solid 1px $dark-brown
+      background: #F2DAA5
+      margin-top: 0
+      padding: 5px
+

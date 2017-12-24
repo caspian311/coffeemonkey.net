@@ -1,15 +1,4 @@
-.banner {
-  border-bottom: 1px solid black;
-  height: 80px; }
-
-.banner img {
-  display: inline-block;
-  height: 80px; }
-
-.banner h1 {
-  display: inline-block;
-  vertical-align: middle;
-  height: 80px; }
-
-#root {
-  clear: both; }
+body {
+  font-size: 14px;
+  font-family: sans-serif;
+  color: #423413; }

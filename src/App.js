@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import MovieList from './movie_list'
+import Banner from './banner'
+import Main from './main'
 import './app.css';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h3>Favorite Movies:</h3>
-        <MovieList />
+        <Banner />
+        <Main />
       </div>
     );
   }
