@@ -1,0 +1,26 @@
+$bright-orange: #F2C052
+$dark-brown: #423413
+
+input
+  border-radius: 2px
+  border: solid 1px $dark-brown
+  display: block
+  font-size: 18px
+  margin: 10px auto 0 auto
+  padding: 10px
+  width: 50%
+
+  &[type=submit]
+    float: right
+    font-size: 16px
+    width: 30%
+    background: $bright-orange
+    margin: 10px 10px 10px 0
+
+form
+  &:after
+    clear: both
+    content: ''
+    display: block
+
+
