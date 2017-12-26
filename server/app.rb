@@ -2,7 +2,16 @@ require 'sinatra'
 require 'sinatra/json'
 require 'byebug'
 
-get '/' do
+post '/login' do
+  headers 'Access-Control-Allow-Origin' => '*'
+  if params['username'] == 'test' and params['password'] == 'pass'
+    json session: 'blah blah blah'
+  else
+    halt 401
+  end
+end
+
+get '/movies' do
   headers 'Access-Control-Allow-Origin' => '*'
   json movies: [
     { 
