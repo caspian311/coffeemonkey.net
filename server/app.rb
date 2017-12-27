@@ -5,7 +5,7 @@ require 'byebug'
 post '/login' do
   headers 'Access-Control-Allow-Origin' => '*'
   if params['username'] == 'test' and params['password'] == 'pass'
-    json session: 'blah blah blah'
+    json authToken: SecureRandom.uuid
   else
     halt 401
   end

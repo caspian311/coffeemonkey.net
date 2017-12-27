@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './login.css';
 import LoginService from './login_service';
+import Auth from './auth';
 
 class Login extends Component {
   constructor() {
@@ -17,7 +18,9 @@ class Login extends Component {
     e.preventDefault();
 
     const data = new FormData(e.target);
-    LoginService.login(data).then(() => {
+    LoginService.login(data).then((authToken) => {
+      debugger
+      Auth.setSession(authToken);
       this.props.history.push('/admin');
     }).catch(() => {
       this.setState({
