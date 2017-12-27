@@ -18,7 +18,7 @@ class Login extends Component {
 
     const data = new FormData(e.target);
     LoginService.login(data).then(() => {
-      console.log('Login succeeded!');
+      this.props.history.push('/admin');
     }).catch(() => {
       this.setState({
         error: 'Incorrect username or password.', 
