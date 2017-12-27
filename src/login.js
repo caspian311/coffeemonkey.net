@@ -30,19 +30,17 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="main">
-        <div className="container">
-          <h3 className="title">Login</h3>
-          <div className="content">
-            {this.state.error &&
-              <h3 className="error">{this.state.error}</h3>
-            }
-            <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Username" name="username" id="username" />
-            <input type="password" placeholder="Password" name="password" id="password" />
-            <input type="submit" value="Login" />
-            </form>
-          </div>
+      <div className="container">
+        <h3 className="title">Login</h3>
+        <div className="content">
+          {this.state.error &&
+            <h3 className="error">{this.state.error}</h3>
+          }
+          <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Username" name="username" id="username" />
+          <input type="password" placeholder="Password" name="password" id="password" />
+          <input type="submit" value="Login" />
+          </form>
         </div>
       </div>
     );

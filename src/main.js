@@ -5,12 +5,10 @@ import './main.css';
 class Main extends Component {
   render() {
     return (
-      <div className="main">
-        <div className="container">
-          <h3 className="title">Favorite Movies</h3>
-          <div className="content">
-            <MovieList />
-          </div>
+      <div className="container">
+        <h3 className="title">Favorite Movies</h3>
+        <div className="content">
+          <MovieList />
         </div>
       </div>
     );
