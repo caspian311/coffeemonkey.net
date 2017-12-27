@@ -19,7 +19,6 @@ class Login extends Component {
 
     const data = new FormData(e.target);
     LoginService.login(data).then((authToken) => {
-      debugger
       Auth.setSession(authToken);
       this.props.history.push('/admin');
     }).catch(() => {

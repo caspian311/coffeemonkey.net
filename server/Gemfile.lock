@@ -3,6 +3,9 @@ GEM
   specs:
     backports (3.10.3)
     byebug (9.1.0)
+    faker (1.6.3)
+      i18n (~> 0.5)
+    i18n (0.8.6)
     multi_json (1.12.2)
     mustermann (1.0.1)
     puma (3.10.0)
@@ -28,6 +31,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  faker
   puma
   sinatra
   sinatra-contrib
