@@ -25,7 +25,7 @@ class Admin extends Component {
       this.setState(() => {
         let s = secrets.map((secret, index) => {
           return (
-            <li>{secret}</li>
+            <li key={index}>{secret}</li>
           );
         });
 
