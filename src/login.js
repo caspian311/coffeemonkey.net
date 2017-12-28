@@ -18,8 +18,8 @@ class Login extends Component {
     e.preventDefault();
 
     const data = new FormData(e.target);
-    LoginService.login(data).then((authToken) => {
-      Auth.setSession(authToken);
+    LoginService.login(data).then((user) => {
+      Auth.setSession(user);
       this.props.history.push('/admin');
     }).catch(() => {
       this.setState({

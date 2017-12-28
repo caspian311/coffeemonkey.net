@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Banner from './banner';
-import Main from './main';
-import Login from './login';
 import Admin from './admin';
+import Banner from './banner';
+import Login from './login';
+import Main from './main';
 import './app.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Banner />
+          <Route component={Banner} />
           <div className="main">
             <Route exact={true} path="/" component={Main} />
             <Route exact={true} path="/login" component={Login} />
