@@ -21,6 +21,13 @@ class Auth {
     return new Date().getTime() < expiresAt;
   }
 
+  static getUser() {
+    return { 
+      firstName: localStorage.getItem('firstName'), 
+      lastName: localStorage.getItem('lastName') 
+    };
+  }
+
   static getToken() {
     if (this.isAuthenticated()) {
       return localStorage.getItem('authToken');
