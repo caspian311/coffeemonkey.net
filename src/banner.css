@@ -31,10 +31,10 @@
     .banner ul.actions li {
       display: inline;
       padding-left: 10px; }
-    .banner ul.actions a {
+    .banner ul.actions a, .banner ul.actions button {
       text-decoration: none;
       text-transform: uppercase; }
-      .banner ul.actions a:hover {
+      .banner ul.actions a:hover, .banner ul.actions button:hover {
         text-decoration: underline; }
   .banner:after {
     clear: both;

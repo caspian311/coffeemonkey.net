@@ -28,7 +28,7 @@ class UserGreeting extends Component {
           Welcome, {this.state.firstName} {this.state.lastName}!
         </li>
         <li>
-          <a href="#" onClick={this.logout}>Logout</a>
+          <button className="link" onClick={this.logout}>Logout</button>
         </li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>
