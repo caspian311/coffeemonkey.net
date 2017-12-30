@@ -30,6 +30,7 @@ class Auth {
     if (this.isAuthenticated()) {
       return localStorage.getItem('authToken');
     } else {
+      console.log('no auth token stored');
       return null;
     }
   }

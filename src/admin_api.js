@@ -2,11 +2,14 @@ import Auth from './auth';
 let axios = require('axios');
 
 const url = 'http://localhost:4567/secrets';
-const options = { headers: { 'Authorization': Auth.getToken()} };
 
 class AdminApi {
+  static adminHeaders() {
+    return { headers: { 'Authorization': Auth.getToken()} };
+  }
+
   static fetchSecrets() {
-    return axios.get(url, options).then((response) => {
+    return axios.get(url, AdminApi.adminHeaders()).then((response) => {
       return response.data['secrets'];
     });
   }

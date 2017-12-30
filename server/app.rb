@@ -23,7 +23,10 @@ options '*' do
 end
 
 post '/login' do
-  halt 401 if params['username'] != 'test' || params['password'] != 'pass'
+  if params['username'] != 'test' || params['password'] != 'pass'
+    puts '401: invalid creds'
+    halt 401
+  end
 
   auth_token = SecureRandom.uuid
   payload = { authToken: auth_token,
@@ -36,17 +39,38 @@ post '/login' do
 end
 
 get '/secrets' do
-  auth_token = env['HTTP_AUTHORIZATION']
+  if valid_session?
+    update_current_session
 
-  if @@sessions.keys.include?(auth_token)
     secrets = 5.times.map do
       Faker::Name.name
     end
 
     json secrets: secrets
   else
+    if current_session
+      puts "401: Sessions expired at #{current_session[:expiresAt]}"
+    else 
+      puts "401: Session #{env['HTTP_AUTHORIZATION']} did not exist in #{@@sessions.keys}"
+    end
     halt 401
   end
+end
+
+def valid_session?
+  if current_session && current_session[:expiresAt]
+    return Time.at(current_session[:expiresAt]) > Time.now
+  end
+  false
+end
+
+def current_session
+  puts "No auth token given!" unless env['HTTP_AUTHORIZATION']
+  @@sessions[env['HTTP_AUTHORIZATION']]
+end
+
+def update_current_session
+  current_session[:expiresAt] = 5.minutes.from_now.utc.to_i
 end
 
 get '/movies' do
