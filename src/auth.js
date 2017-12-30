@@ -1,12 +1,9 @@
-const sessionLength = 5 * 60 * 1000;
-
 class Auth {
   static setSession(user) {
-    let expirationDate = sessionLength + new Date().getTime();
-    localStorage.setItem('authToken', user.token);
+    localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('firstName', user.firstName);
     localStorage.setItem('lastName', user.lastName);
-    localStorage.setItem('expiresAt', expirationDate);
+    localStorage.setItem('expiresAt', user.expiresAt);
   }
 
   static logout() {
@@ -18,7 +15,8 @@ class Auth {
 
   static isAuthenticated() {
     let expiresAt = localStorage.getItem('expiresAt');
-    return new Date().getTime() < expiresAt;
+    let expiresAtDate = Date.parse(expiresAt);
+    return new Date().getTime() < expiresAtDate;
   }
 
   static getUser() {
