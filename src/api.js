@@ -2,9 +2,10 @@ var axios = require('axios');
 
 class Api {
   static getMovies() {
-    const url = 'http://localhost:4567/movies';
-    //const url = 'https://uled7x7uyb.execute-api.us-east-1.amazonaws.com/test1';
-    return axios.get(url).then(function(response) {
+    const baseUrl = 'http://localhost:4567';
+    //const baseUrl = 'https://61vlqvtal7.execute-api.us-east-1.amazonaws.com/prod';
+
+    return axios.get(baseUrl + "/movies").then(function(response) {
       return response.data['movies'];
     });
   }
