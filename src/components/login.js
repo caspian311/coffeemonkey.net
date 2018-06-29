@@ -4,21 +4,19 @@ import "./login.css";
 import * as loginActions from "../actions/loginActions";
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      error: "",
-      username: "",
-      password: "",
-    };
-  }
+  goToAdmin = () => {
+    this.props.history.push("/admin");
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    this.props.loginDispatch(this.props.username, this.props.password);
+    this.props.loginDispatch(
+      this.props.username,
+      this.props.password,
+      this.goToAdmin
+    );
   };
 
   usernameChanged = e => {
@@ -73,8 +71,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginDispatch: (username, password) =>
-      loginActions.login(dispatch, username, password),
+    loginDispatch: (username, password, goToAdmin) =>
+      loginActions.login(dispatch, username, password, goToAdmin),
     usernameChangedDispatch: username =>
       loginActions.usernameChanged(dispatch, username),
     passwordChangedDispatch: password =>

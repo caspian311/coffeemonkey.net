@@ -23,8 +23,7 @@ options '*' do
 end
 
 post '/login' do
-  byebug
-  if params['username'] != 'test' || params['password'] != 'pass'
+  unless valid_login? request
     puts '401: invalid creds'
     halt 401
   end
@@ -37,6 +36,12 @@ post '/login' do
   @@sessions[auth_token] = payload
 
   json payload
+end
+
+def valid_login?(request)
+  login = JSON.parse(request.body.read) rescue nil
+  return false unless login
+  login['username'] == 'test' and login['password'] == 'pass'
 end
 
 get '/secrets' do
