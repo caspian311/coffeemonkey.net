@@ -1,7 +1,7 @@
 var axios = require('axios');
 
 const baseUrl = 'http://localhost:4567';
-//const baseUrl = 'https://8onw2k1yti.execute-api.us-east-1.amazonaws.com/prod';
+//const baseUrl = 'https://wdw4w3pvrk.execute-api.us-east-1.amazonaws.com/prod';
 
 class Api {
   static getMovies() {

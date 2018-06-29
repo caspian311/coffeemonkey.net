@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import Auth from './auth';
-import Greeting from './greeting';
+import Auth from "../auth";
+import Greeting from "./greeting";
 
-import './banner.css';
+import "./banner.css";
 
 class Banner extends Component {
   constructor(props) {

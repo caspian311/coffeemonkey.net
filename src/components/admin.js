@@ -1,32 +1,30 @@
-import React, { Component } from 'react';
-import Auth from './auth';
-import AdminApi from './admin_api';
-import './admin.css';
+import React, { Component } from "react";
+import Auth from "../auth";
+import AdminApi from "../admin_api";
+import "./admin.css";
 
 class Admin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      secrets: []
+      secrets: [],
     };
   }
 
   componentDidMount() {
     if (!Auth.isAuthenticated()) {
-      this.props.history.push('/login');
+      this.props.history.push("/login");
     }
 
     this.populateSecrets();
   }
 
   populateSecrets() {
-    AdminApi.fetchSecrets().then((secrets) => {
+    AdminApi.fetchSecrets().then(secrets => {
       this.setState(() => {
         let s = secrets.map((secret, index) => {
-          return (
-            <li key={index}>{secret}</li>
-          );
+          return <li key={index}>{secret}</li>;
         });
 
         return { secrets: s };
@@ -39,9 +37,7 @@ class Admin extends Component {
       <div className="container">
         <h3 className="title">Admin</h3>
         <div className="content">
-          <ul>
-            {this.state.secrets}
-          </ul>
+          <ul>{this.state.secrets}</ul>
         </div>
       </div>
     );
@@ -49,4 +45,3 @@ class Admin extends Component {
 }
 
 export default Admin;
-
