@@ -23,6 +23,7 @@ options '*' do
 end
 
 post '/login' do
+  byebug
   if params['username'] != 'test' || params['password'] != 'pass'
     puts '401: invalid creds'
     halt 401
