@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import "../css/login.css";
 import * as loginActions from "../actions/loginActions";
+import LoginErrorMessage from "./loginErrorMessage";
 
 class Login extends Component {
   goToAdmin = () => {
@@ -32,9 +33,10 @@ class Login extends Component {
       <div className="container">
         <h3 className="title">Login</h3>
         <div className="content">
-          {this.props.showLoginErrorMessage && (
-            <h3 className="error">{this.props.errorMessage}</h3>
-          )}
+          <LoginErrorMessage
+            shouldShow={this.props.showLoginErrorMessage}
+            message={this.props.errorMessage}
+          />
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"

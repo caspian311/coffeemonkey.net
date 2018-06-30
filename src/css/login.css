@@ -19,7 +19,3 @@ form:after {
   clear: both;
   content: '';
   display: block; }
-
-.error {
-  color: #cc0000;
-  text-align: center; }
