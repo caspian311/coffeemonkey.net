@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import MovieList from './movie_list'
-import './main.css';
+import React, { Component } from "react";
+import MovieList from "./movie_list";
+import "../css/main.css";
 
 class Main extends Component {
   render() {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Auth from "../auth";
 import Greeting from "./greeting";
 
-import "./banner.css";
+import "../css/banner.css";
 
 class Banner extends Component {
   constructor(props) {

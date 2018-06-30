@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Auth from "../auth";
 import AdminApi from "../admin_api";
-import "./admin.css";
+import "../css/admin.css";
 
 class Admin extends Component {
   constructor(props) {
