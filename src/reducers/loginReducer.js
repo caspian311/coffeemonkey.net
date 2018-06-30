@@ -9,7 +9,7 @@ import {
 export default function login(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      console.log("submit login");
+      console.log("login successful");
 
       return {
         ...state,
