@@ -1,31 +1,25 @@
+import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../auth";
 
 class UserGreeting extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { firstName: "", lastName: "" };
-    this.logout = this.logout.bind(this);
-  }
-
   componentDidMount() {
     this.setState(Auth.getUser());
   }
 
-  logout(e) {
+  logout = e => {
     e.preventDefault();
 
     Auth.logout();
     this.props.history.push("/login");
-  }
+  };
 
   render() {
     return (
       <ul className="actions">
         <li>
-          Welcome, {this.state.firstName} {this.state.lastName}!
+          Welcome, {this.props.firstName} {this.props.lastName}!
         </li>
         <li>
           <button className="link" onClick={this.logout}>
@@ -40,4 +34,27 @@ class UserGreeting extends Component {
   }
 }
 
-export default UserGreeting;
+function mapStateToProps(state) {
+  if (state.login.user) {
+    return {
+      firstName: state.login.user.firstName,
+      lastName: state.login.user.lastName,
+    };
+  }
+
+  const user = Auth.getUser();
+
+  return {
+    firstName: user.firstName,
+    lastName: user.lastName,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserGreeting);
