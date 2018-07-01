@@ -31,16 +31,4 @@ class LogoutButton extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LogoutButton);
+export default LogoutButton;
