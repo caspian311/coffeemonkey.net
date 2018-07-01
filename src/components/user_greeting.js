@@ -2,19 +2,9 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../auth";
+import LogoutButton from "./logoutButton";
 
 class UserGreeting extends Component {
-  componentDidMount() {
-    this.setState(Auth.getUser());
-  }
-
-  logout = e => {
-    e.preventDefault();
-
-    Auth.logout();
-    this.props.history.push("/login");
-  };
-
   render() {
     return (
       <ul className="actions">
@@ -22,9 +12,7 @@ class UserGreeting extends Component {
           Welcome, {this.props.firstName} {this.props.lastName}!
         </li>
         <li>
-          <button className="link" onClick={this.logout}>
-            Logout
-          </button>
+          <LogoutButton />
         </li>
         <li>
           <Link to="/contact">Contact</Link>

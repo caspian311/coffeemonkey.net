@@ -12,7 +12,7 @@ class Greeting extends Component {
 
   render() {
     if (Auth.isAuthenticated()) {
-      return <UserGreeting history={this.state.history} />;
+      return <UserGreeting />;
     } else {
       return (
         <ul className="actions">
