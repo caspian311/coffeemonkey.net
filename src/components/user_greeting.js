@@ -23,13 +23,6 @@ class UserGreeting extends Component {
 }
 
 function mapStateToProps(state) {
-  if (state.login.user) {
-    return {
-      firstName: state.login.user.firstName,
-      lastName: state.login.user.lastName,
-    };
-  }
-
   const user = Auth.getUser();
 
   return {

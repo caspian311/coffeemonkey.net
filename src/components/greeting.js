@@ -13,18 +13,18 @@ class Greeting extends Component {
   render() {
     if (Auth.isAuthenticated()) {
       return <UserGreeting />;
-    } else {
-      return (
-        <ul className="actions">
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      );
     }
+
+    return (
+      <ul className="actions">
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+    );
   }
 }
 
