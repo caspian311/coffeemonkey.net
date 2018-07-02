@@ -82,26 +82,32 @@ end
 get '/movies' do
   json movies: [
     {
+      id: 1,
       title: 'Star Wars: A New Hope',
       release_date: '1977'
     },
     {
+      id: 2,
       title: 'Star Wars: Empire Strikes Back',
       release_date: '1980'
     },
     {
+      id: 3,
       title: 'Star Wars: Return of the Jedi',
       release_date: '1983'
     },
     {
+      id: 4,
       title: 'Indiana Jones: Raiders of the Lost Ark',
       release_date: '1981'
     },
     {
+      id: 5,
       title: 'Indiana Jones and the Temple of Doom',
       release_date: '1984'
     },
     {
+      id: 6,
       title: 'Indiana Jones and the Last Crusade',
       release_date: '1989'
     }

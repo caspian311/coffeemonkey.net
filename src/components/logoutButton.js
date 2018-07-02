@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 import React, { Component } from "react";
 import Auth from "../auth";
 import { Redirect } from "react-router-dom";
