@@ -3,13 +3,8 @@
   .admin-movie form input {
     display: inline; }
     .admin-movie form input[type=text] {
-      margin-right: 10px; }
-      @media (max-width: 1200px) {
-        .admin-movie form input[type=text] {
-          width: 380px; } }
-      @media (max-width: 768px) {
-        .admin-movie form input[type=text] {
-          width: 300px; } }
+      margin-right: 10px;
+      width: 380px; }
       @media (max-width: 400px) {
         .admin-movie form input[type=text] {
           width: 212px; } }
