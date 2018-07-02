@@ -1,0 +1,41 @@
+$dark-brown: #F2DAA5
+
+$break-small: 400px
+$break-medium: 768px
+$break-large: 1200px
+
+.admin-movie
+  form
+    // min-width: 300px
+    margin: 10px auto
+
+    input
+      display: inline
+
+      &[type=text]
+        margin-right: 10px
+
+        @media (max-width: $break-large)
+          width: 380px
+
+        @media (max-width: $break-medium)
+          width: 300px
+
+        @media (max-width: $break-small)
+          width: 212px
+
+
+  ul
+    list-style-type: none
+    padding: 0
+
+    li
+      padding: 10px
+
+      &.alt
+        background: $dark-brown
+    a
+      text-decoration: none
+      padding-right: 20px
+      text-transform: uppercase
+      float: right

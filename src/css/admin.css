@@ -1,0 +1,28 @@
+.admin-movie form {
+  margin: 10px auto; }
+  .admin-movie form input {
+    display: inline; }
+    .admin-movie form input[type=text] {
+      margin-right: 10px; }
+      @media (max-width: 1200px) {
+        .admin-movie form input[type=text] {
+          width: 380px; } }
+      @media (max-width: 768px) {
+        .admin-movie form input[type=text] {
+          width: 300px; } }
+      @media (max-width: 400px) {
+        .admin-movie form input[type=text] {
+          width: 212px; } }
+
+.admin-movie ul {
+  list-style-type: none;
+  padding: 0; }
+  .admin-movie ul li {
+    padding: 10px; }
+    .admin-movie ul li.alt {
+      background: #F2DAA5; }
+  .admin-movie ul a {
+    text-decoration: none;
+    padding-right: 20px;
+    text-transform: uppercase;
+    float: right; }

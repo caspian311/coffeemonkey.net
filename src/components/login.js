@@ -1,8 +1,10 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import "../css/login.css";
 import * as loginActions from "../actions/loginActions";
 import LoginErrorMessage from "./loginErrorMessage";
+
+import "../css/forms.css";
+import "../css/login.css";
 
 class Login extends Component {
   goToAdmin = () => {
@@ -30,7 +32,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container login">
         <h3 className="title">Login</h3>
         <div className="content">
           <LoginErrorMessage
