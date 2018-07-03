@@ -2,24 +2,25 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import * as loginActions from "../actions/loginActions";
 import LoginErrorMessage from "./loginErrorMessage";
+import { Redirect } from "react-router-dom";
 
 import "../css/forms.css";
 import "../css/login.css";
 
 class Login extends Component {
-  goToAdmin = () => {
-    this.props.history.push("/admin");
-  };
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.state = {
+  //     shouldGoToAdmin: false,
+  //   };
+  // }
 
   handleSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    this.props.loginDispatch(
-      this.props.username,
-      this.props.password,
-      this.goToAdmin
-    );
+    this.props.loginDispatch(this.props.username, this.props.password);
   };
 
   usernameChanged = e => {
@@ -31,6 +32,10 @@ class Login extends Component {
   };
 
   render() {
+    if (this.props.shouldGoToAdmin) {
+      return <Redirect to={"/admin"} />;
+    }
+
     return (
       <div className="container login">
         <h3 className="title">Login</h3>
@@ -70,13 +75,14 @@ function mapStateToProps(state) {
     password: state.login.password,
     showLoginErrorMessage: state.login.showLoginErrorMessage,
     errorMessage: state.login.errorMessage,
+    shouldGoToAdmin: state.login.shouldGoToAdmin,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginDispatch: (username, password, goToAdmin) =>
-      loginActions.login(dispatch, username, password, goToAdmin),
+    loginDispatch: (username, password) =>
+      loginActions.login(dispatch, username, password),
     usernameChangedDispatch: username =>
       loginActions.usernameChanged(dispatch, username),
     passwordChangedDispatch: password =>

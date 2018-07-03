@@ -1,6 +1,8 @@
+import { connect } from "react-redux";
 import React, { Component } from "react";
 import Auth from "../auth";
 import Api from "../api";
+import * as adminActions from "../actions/adminActions";
 import { Redirect } from "react-router-dom";
 
 import "../css/admin.css";
@@ -12,6 +14,7 @@ class Admin extends Component {
 
     this.state = {
       movies: [],
+      newTitle: "",
     };
   }
 
@@ -52,6 +55,10 @@ class Admin extends Component {
     );
   }
 
+  newTitleChanged = e => {
+    this.props.newTitleChangeDispatch(e.target.value);
+  };
+
   render() {
     if (!Auth.isAuthenticated()) {
       return <Redirect to={"/login"} />;
@@ -62,7 +69,12 @@ class Admin extends Component {
         <h3 className="title">Admin</h3>
         <div className="content">
           <form>
-            <input type="text" placeholder="Movie title" />
+            <input
+              type="text"
+              placeholder="Movie title"
+              onChange={this.newTitleChanged}
+              value={this.props.newTitle}
+            />
             <input type="button" value="Add" />
           </form>
           {this.movieList()}
@@ -72,4 +84,20 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+function mapStateToProps(state) {
+  return {
+    newTitle: state.newTitle,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    newTitleChangeDispatch: newTitle =>
+      adminActions.newTitleChanged(dispatch, newTitle),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Admin);

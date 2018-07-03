@@ -14,6 +14,7 @@ export default function login(state = initialState, action) {
       return {
         ...state,
         showLoginErrorMessage: false,
+        shouldGoToAdmin: true,
         user: action.payload.user,
       };
     case BAD_LOGIN:

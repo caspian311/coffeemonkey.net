@@ -3,4 +3,5 @@ export default {
   password: "",
   showLoginErrorMessage: false,
   errorMessage: "",
+  shouldRedirectToAdmin: false,
 };
