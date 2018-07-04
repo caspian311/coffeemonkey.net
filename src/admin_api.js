@@ -11,6 +11,10 @@ class AdminApi {
   static addMovie(title) {
     return axios.post(url, { title: title });
   }
+
+  static deleteMovie(movieId) {
+    return axios.delete(url + "/" + movieId);
+  }
 }
 
 export default AdminApi;

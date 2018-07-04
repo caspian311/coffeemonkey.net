@@ -16,7 +16,7 @@ before do
 end
 
 options '*' do
-  response.headers['Allow'] = 'GET, POST, OPTIONS'
+  response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE, PUT'
   response.headers['Access-Control-Allow-Headers'] = 'Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token'
   response.headers['Access-Control-Allow-Origin'] = '*'
   200
@@ -56,7 +56,7 @@ get '/secrets' do
   else
     if current_session
       puts "401: Sessions expired at #{current_session[:expiresAt]}"
-    else 
+    else
       puts "401: Session #{env['HTTP_AUTHORIZATION']} did not exist in #{@@sessions.keys}"
     end
     halt 401
@@ -131,6 +131,16 @@ post '/movies' do
 
   @@movies << movie
 
+  json movie
+end
+
+delete '/movies/:movie_id' do |movie_id|
+  movie = @@movies.find{ |m| m[:id] == movie_id.to_i }
+  unless movie
+    halt 404
+  end
+
+  @@movies.delete(movie)
   json movie
 end
 

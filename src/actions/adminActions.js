@@ -11,7 +11,7 @@ export function addNewTitle(dispatch, newTitle) {
     .catch(response => {
       const errorMessage = "An error occurred while trying to add your title.";
       dispatch({
-        type: types.ERROR_ADDING_NEW_TITLE,
+        type: types.ADMIN_ERROR,
         payload: { errorMessage },
       });
     })
@@ -27,4 +27,21 @@ export function populateMovieList(dispatch) {
   Api.getMovies().then(movies => {
     dispatch({ type: types.MOVIES_LOADED, payload: { movies } });
   });
+}
+
+export function deleteMovie(dispatch, movieId) {
+  AdminApi.deleteMovie(movieId)
+    .catch(response => {
+      const errorMessage = "An error occurred while deleting a movie.";
+      dispatch({
+        type: types.ADMIN_ERROR,
+        payload: { errorMessage },
+      });
+    })
+    .then(response => {
+      if (response === undefined) {
+        return;
+      }
+      dispatch({ type: types.TITLE_REMOVED });
+    });
 }

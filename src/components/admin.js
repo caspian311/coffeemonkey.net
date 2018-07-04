@@ -25,9 +25,9 @@ class Admin extends Component {
     return index % 2 === 0 ? "" : "alt";
   }
 
-  deleteMovie(movie) {
-    console.log(movie);
-  }
+  deleteMovie = movie => {
+    this.props.deleteMovieDispatch(movie);
+  };
 
   movieList() {
     return (
@@ -110,6 +110,7 @@ function mapDispatchToProps(dispatch) {
       adminActions.newTitleChanged(dispatch, newTitle),
     addNewTitleDispatch: newTitle =>
       adminActions.addNewTitle(dispatch, newTitle),
+    deleteMovieDispatch: movieId => adminActions.deleteMovie(dispatch, movieId),
   };
 }
 

@@ -14,7 +14,7 @@ export default function admin(state = initialState, action) {
         ...state,
         newTitle: action.payload.newTitle,
       };
-    case types.ERROR_ADDING_NEW_TITLE:
+    case types.ADMIN_ERROR:
       return {
         ...state,
         shouldShowError: true,
@@ -26,6 +26,11 @@ export default function admin(state = initialState, action) {
         shouldReloadMovies: true,
         shouldShowError: false,
         newTitle: "",
+      };
+    case types.TITLE_REMOVED:
+      return {
+        ...state,
+        shouldReloadMovies: true,
       };
     default:
       return state;
