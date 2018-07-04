@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import Auth from "../auth";
-import Api from "../api";
 import * as adminActions from "../actions/adminActions";
 import { Redirect } from "react-router-dom";
 
@@ -19,15 +18,7 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    this.populateMovieList();
-  }
-
-  populateMovieList() {
-    Api.getMovies().then(movies => {
-      this.setState(() => {
-        return { movies };
-      });
-    });
+    this.props.populateMovieListDispatch();
   }
 
   classNameFromIndex(index) {
@@ -41,16 +32,17 @@ class Admin extends Component {
   movieList() {
     return (
       <ul>
-        {this.state.movies.map((movie, index) => {
-          return (
-            <li key={index} className={this.classNameFromIndex(index)}>
-              <span>{movie.title}</span>
-              <a href="#blah" onClick={() => this.deleteMovie(movie.id)}>
-                X
-              </a>
-            </li>
-          );
-        })}
+        {this.props.movies &&
+          this.props.movies.map((movie, index) => {
+            return (
+              <li key={index} className={this.classNameFromIndex(index)}>
+                <span>{movie.title}</span>
+                <a href="#blah" onClick={() => this.deleteMovie(movie.id)}>
+                  X
+                </a>
+              </li>
+            );
+          })}
       </ul>
     );
   }
@@ -59,9 +51,25 @@ class Admin extends Component {
     this.props.newTitleChangeDispatch(e.target.value);
   };
 
+  addTitleClick = e => {
+    this.props.addNewTitleDispatch(this.props.newTitle);
+  };
+
+  errorMessage() {
+    return (
+      this.props.shouldShowError && (
+        <div className="error">{this.props.errorMessage}</div>
+      )
+    );
+  }
+
   render() {
     if (!Auth.isAuthenticated()) {
       return <Redirect to={"/login"} />;
+    }
+
+    if (this.props.shouldReloadMovies) {
+      this.props.populateMovieListDispatch();
     }
 
     return (
@@ -75,7 +83,8 @@ class Admin extends Component {
               onChange={this.newTitleChanged}
               value={this.props.newTitle}
             />
-            <input type="button" value="Add" />
+            <input type="button" value="Add" onClick={this.addTitleClick} />
+            {this.errorMessage()}
           </form>
           {this.movieList()}
         </div>
@@ -86,14 +95,21 @@ class Admin extends Component {
 
 function mapStateToProps(state) {
   return {
-    newTitle: state.newTitle,
+    movies: state.admin.movies,
+    newTitle: state.admin.newTitle,
+    shouldShowError: state.admin.shouldShowError,
+    errorMessage: state.admin.errorMessage,
+    shouldReloadMovies: state.admin.shouldReloadMovies,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    populateMovieListDispatch: () => adminActions.populateMovieList(dispatch),
     newTitleChangeDispatch: newTitle =>
       adminActions.newTitleChanged(dispatch, newTitle),
+    addNewTitleDispatch: newTitle =>
+      adminActions.addNewTitle(dispatch, newTitle),
   };
 }
 

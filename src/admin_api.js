@@ -1,17 +1,15 @@
-import Auth from './auth';
-let axios = require('axios');
+import Auth from "./auth";
+let axios = require("axios");
 
-const url = 'http://localhost:4567/secrets';
+const url = "http://localhost:4567/movies";
 
 class AdminApi {
   static adminHeaders() {
-    return { headers: { 'Authorization': Auth.getToken()} };
+    return { headers: { Authorization: Auth.getToken() } };
   }
 
-  static fetchSecrets() {
-    return axios.get(url, AdminApi.adminHeaders()).then((response) => {
-      return response.data['secrets'];
-    });
+  static addMovie(title) {
+    return axios.post(url, { title: title });
   }
 }
 

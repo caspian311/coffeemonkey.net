@@ -79,37 +79,64 @@ def update_current_session
   current_session[:expiresAt] = 5.minutes.from_now.utc.to_i
 end
 
+@@movies = [
+  {
+    id: 1,
+    title: 'Star Wars: A New Hope',
+    release_date: '1977'
+  },
+  {
+    id: 2,
+    title: 'Star Wars: Empire Strikes Back',
+    release_date: '1980'
+  },
+  {
+    id: 3,
+    title: 'Star Wars: Return of the Jedi',
+    release_date: '1983'
+  },
+  {
+    id: 4,
+    title: 'Indiana Jones: Raiders of the Lost Ark',
+    release_date: '1981'
+  },
+  {
+    id: 5,
+    title: 'Indiana Jones and the Temple of Doom',
+    release_date: '1984'
+  },
+  {
+    id: 6,
+    title: 'Indiana Jones and the Last Crusade',
+    release_date: '1989'
+  }
+]
+@@id = 6
+
 get '/movies' do
-  json movies: [
-    {
-      id: 1,
-      title: 'Star Wars: A New Hope',
-      release_date: '1977'
-    },
-    {
-      id: 2,
-      title: 'Star Wars: Empire Strikes Back',
-      release_date: '1980'
-    },
-    {
-      id: 3,
-      title: 'Star Wars: Return of the Jedi',
-      release_date: '1983'
-    },
-    {
-      id: 4,
-      title: 'Indiana Jones: Raiders of the Lost Ark',
-      release_date: '1981'
-    },
-    {
-      id: 5,
-      title: 'Indiana Jones and the Temple of Doom',
-      release_date: '1984'
-    },
-    {
-      id: 6,
-      title: 'Indiana Jones and the Last Crusade',
-      release_date: '1989'
-    }
-  ]
+  json movies: @@movies
+end
+
+post '/movies' do
+  unless valid_title?(request)
+    puts '400: invalid title'
+    halt 400
+  end
+
+  @@id += 1
+  movie = {
+    id: @@id,
+    title: @title
+  }
+
+  @@movies << movie
+
+  json movie
+end
+
+def valid_title?(request)
+  data = JSON.parse(request.body.read) rescue nil
+  return false unless data
+  @title = data["title"]
+  @title.to_s.empty? == false
 end
