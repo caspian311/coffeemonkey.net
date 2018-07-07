@@ -16,6 +16,7 @@ before do
 end
 
 options '*' do
+  #response.headers['Allow'] = 'GET, POST, OPTIONS, DELETE, PUT'
   response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE, PUT'
   response.headers['Access-Control-Allow-Headers'] = 'Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token'
   response.headers['Access-Control-Allow-Origin'] = '*'
@@ -56,7 +57,7 @@ get '/secrets' do
   else
     if current_session
       puts "401: Sessions expired at #{current_session[:expiresAt]}"
-    else
+    else 
       puts "401: Session #{env['HTTP_AUTHORIZATION']} did not exist in #{@@sessions.keys}"
     end
     halt 401
