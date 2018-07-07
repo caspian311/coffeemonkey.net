@@ -1,50 +1,21 @@
-import { connect } from "react-redux";
-import React, { Component } from "react";
-import Auth from "../auth";
-import * as adminActions from "../actions/adminActions";
-import { Redirect } from "react-router-dom";
-
 import "../css/admin.css";
 import "../css/forms.css";
+
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import React, { Component } from "react";
+
+import Auth from "../auth";
+import EditableMovieList from "./editableMovieList";
+import * as adminActions from "../actions/adminActions";
 
 class Admin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: [],
       newTitle: "",
     };
-  }
-
-  componentDidMount() {
-    this.props.populateMovieListDispatch();
-  }
-
-  classNameFromIndex(index) {
-    return index % 2 === 0 ? "" : "alt";
-  }
-
-  deleteMovie = movie => {
-    this.props.deleteMovieDispatch(movie);
-  };
-
-  movieList() {
-    return (
-      <ul>
-        {this.props.movies &&
-          this.props.movies.map((movie, index) => {
-            return (
-              <li key={index} className={this.classNameFromIndex(index)}>
-                <span>{movie.title}</span>
-                <a href="#blah" onClick={() => this.deleteMovie(movie.id)}>
-                  X
-                </a>
-              </li>
-            );
-          })}
-      </ul>
-    );
   }
 
   newTitleChanged = e => {
@@ -68,10 +39,6 @@ class Admin extends Component {
       return <Redirect to={"/login"} />;
     }
 
-    if (this.props.shouldReloadMovies) {
-      this.props.populateMovieListDispatch();
-    }
-
     return (
       <div className="container admin-movie">
         <h3 className="title">Admin</h3>
@@ -86,7 +53,7 @@ class Admin extends Component {
             <input type="button" value="Add" onClick={this.addTitleClick} />
             {this.errorMessage()}
           </form>
-          {this.movieList()}
+          <EditableMovieList />
         </div>
       </div>
     );
@@ -95,22 +62,18 @@ class Admin extends Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.admin.movies,
     newTitle: state.admin.newTitle,
     shouldShowError: state.admin.shouldShowError,
     errorMessage: state.admin.errorMessage,
-    shouldReloadMovies: state.admin.shouldReloadMovies,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    populateMovieListDispatch: () => adminActions.populateMovieList(dispatch),
     newTitleChangeDispatch: newTitle =>
       adminActions.newTitleChanged(dispatch, newTitle),
     addNewTitleDispatch: newTitle =>
       adminActions.addNewTitle(dispatch, newTitle),
-    deleteMovieDispatch: movieId => adminActions.deleteMovie(dispatch, movieId),
   };
 }
 
