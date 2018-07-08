@@ -19,7 +19,7 @@ export function isAuthenticated() {
 }
 
 export function getUser() {
-  return this.isAuthenticated()
+  return isAuthenticated()
     ? {
         firstName: localStorage.getItem("firstName"),
         lastName: localStorage.getItem("lastName"),
@@ -28,7 +28,7 @@ export function getUser() {
 }
 
 export function getToken() {
-  if (this.isAuthenticated()) {
+  if (isAuthenticated()) {
     return localStorage.getItem("authToken");
   } else {
     console.log("no auth token stored");
