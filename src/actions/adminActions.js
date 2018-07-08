@@ -1,5 +1,4 @@
 import * as types from "./actionTypes";
-import * as api from "../services/api";
 import * as adminApi from "../services/admin_api";
 
 export function newTitleChanged(dispatch, newTitle) {
@@ -26,12 +25,6 @@ export function addNewMovie(dispatch, title, year) {
       }
       dispatch({ type: types.NEW_MOVIE_ADDED, payload: { response } });
     });
-}
-
-export function populateMovieList(dispatch) {
-  api.getMovies().then(movies => {
-    dispatch({ type: types.MOVIES_LOADED, payload: { movies } });
-  });
 }
 
 export function deleteMovie(dispatch, movieId) {

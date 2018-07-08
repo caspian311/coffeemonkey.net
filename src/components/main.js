@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MovieList from "./movie_list";
+import MovieList from "./movieList";
 import "../css/main.css";
 
 class Main extends Component {

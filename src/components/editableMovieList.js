@@ -2,20 +2,9 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import * as adminActions from "../actions/adminActions";
+import * as movieActions from "../actions/movieActions";
 
 class EditableMovieList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      movies: [],
-    };
-  }
-
-  componentDidMount() {
-    this.props.populateMovieListDispatch();
-  }
-
   classNameFromIndex(index) {
     return index % 2 === 0 ? "" : "alt";
   }
@@ -51,14 +40,14 @@ class EditableMovieList extends Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.admin.movies,
-    shouldReloadMovies: state.admin.shouldReloadMovies,
+    movies: state.movie.movies,
+    shouldReloadMovies: state.movie.shouldReloadMovies,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    populateMovieListDispatch: () => adminActions.populateMovieList(dispatch),
+    populateMovieListDispatch: () => movieActions.populateMovieList(dispatch),
     deleteMovieDispatch: movieId => adminActions.deleteMovie(dispatch, movieId),
   };
 }
