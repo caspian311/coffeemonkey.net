@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Auth from "../services/auth";
+import * as auth from "../services/auth";
 import UserGreeting from "./user_greeting";
 
 class Greeting extends Component {
@@ -11,7 +11,7 @@ class Greeting extends Component {
   }
 
   render() {
-    if (Auth.isAuthenticated()) {
+    if (auth.isAuthenticated()) {
       return <UserGreeting />;
     }
 

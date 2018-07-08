@@ -4,12 +4,12 @@ import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 
 import AddMovieForm from "./addMovieForm";
-import Auth from "../services/auth";
+import * as auth from "../services/auth";
 import EditableMovieList from "./editableMovieList";
 
 class Admin extends Component {
   render() {
-    if (!Auth.isAuthenticated()) {
+    if (!auth.isAuthenticated()) {
       return <Redirect to={"/login"} />;
     }
 

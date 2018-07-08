@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Auth from "../services/auth";
+import * as auth from "../services/auth";
 import LogoutButton from "./logoutButton";
 
 class UserGreeting extends Component {
@@ -23,7 +23,7 @@ class UserGreeting extends Component {
 }
 
 function mapStateToProps(state) {
-  const user = Auth.getUser();
+  const user = auth.getUser();
 
   return {
     firstName: user.firstName,

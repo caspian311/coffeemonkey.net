@@ -1,11 +1,11 @@
 import * as types from "./actionTypes";
 import LoginService from "../services/login_service";
-import Auth from "../services/auth";
+import * as auth from "../services/auth";
 
 export function login(dispatch, username, password) {
   LoginService.login(username, password)
     .then(user => {
-      Auth.setSession(user);
+      auth.setSession(user);
       dispatch({ type: types.LOGIN, payload: { user } });
     })
     .catch(e => {

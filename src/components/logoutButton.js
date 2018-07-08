@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Auth from "../services/auth";
+import * as auth from "../services/auth";
 import { Redirect } from "react-router-dom";
 
 class LogoutButton extends Component {
@@ -12,7 +12,7 @@ class LogoutButton extends Component {
   logout = e => {
     e.preventDefault();
 
-    Auth.logout();
+    auth.logout();
     this.setState({
       redirectToLogin: true,
     });

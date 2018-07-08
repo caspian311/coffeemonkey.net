@@ -1,41 +1,37 @@
-class Auth {
-  static setSession(user) {
-    localStorage.setItem("authToken", user.authToken);
-    localStorage.setItem("firstName", user.firstName);
-    localStorage.setItem("lastName", user.lastName);
-    localStorage.setItem("expiresAt", user.expiresAt);
-  }
-
-  static logout() {
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("expiresAt");
-  }
-
-  static isAuthenticated() {
-    let expiresAt = localStorage.getItem("expiresAt");
-    let expiresAtDate = Date.parse(expiresAt);
-    return new Date().getTime() < expiresAtDate;
-  }
-
-  static getUser() {
-    return this.isAuthenticated()
-      ? {
-          firstName: localStorage.getItem("firstName"),
-          lastName: localStorage.getItem("lastName"),
-        }
-      : null;
-  }
-
-  static getToken() {
-    if (this.isAuthenticated()) {
-      return localStorage.getItem("authToken");
-    } else {
-      console.log("no auth token stored");
-      return null;
-    }
-  }
+export function setSession(user) {
+  localStorage.setItem("authToken", user.authToken);
+  localStorage.setItem("firstName", user.firstName);
+  localStorage.setItem("lastName", user.lastName);
+  localStorage.setItem("expiresAt", user.expiresAt);
 }
 
-export default Auth;
+export function logout() {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("firstName");
+  localStorage.removeItem("lastName");
+  localStorage.removeItem("expiresAt");
+}
+
+export function isAuthenticated() {
+  let expiresAt = localStorage.getItem("expiresAt");
+  let expiresAtDate = Date.parse(expiresAt);
+  return new Date().getTime() < expiresAtDate;
+}
+
+export function getUser() {
+  return this.isAuthenticated()
+    ? {
+        firstName: localStorage.getItem("firstName"),
+        lastName: localStorage.getItem("lastName"),
+      }
+    : null;
+}
+
+export function getToken() {
+  if (this.isAuthenticated()) {
+    return localStorage.getItem("authToken");
+  } else {
+    console.log("no auth token stored");
+    return null;
+  }
+}
