@@ -9,11 +9,11 @@ class AdminApi {
   }
 
   static addMovie(title) {
-    return axios.post(url, { title: title });
+    return axios.post(url, { title }, AdminApi.adminHeaders());
   }
 
   static deleteMovie(movieId) {
-    return axios.delete(url + "/" + movieId);
+    return axios.delete(url + "/" + movieId, AdminApi.adminHeaders());
   }
 }
 

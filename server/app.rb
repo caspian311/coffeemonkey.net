@@ -25,10 +25,6 @@ before do
 end
 
 def valid_session?
-  # if current_session && current_session[:expiresAt]
-  #   return Time.at(current_session[:expiresAt]) > Time.now
-  # end
-  # false
   current_session && Time.at(current_session[:expiresAt]) > Time.now
 end
 
