@@ -47,8 +47,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    populateMovieListDispatch: () => movieActions.populateMovieList(dispatch),
-    deleteMovieDispatch: movieId => adminActions.deleteMovie(dispatch, movieId),
+    populateMovieListDispatch() {
+      movieActions.populateMovieList(dispatch);
+    },
+    deleteMovieDispatch(movieId) {
+      adminActions.deleteMovie(dispatch, movieId);
+    },
   };
 }
 
