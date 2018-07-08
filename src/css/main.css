@@ -10,7 +10,7 @@
     @media (max-width: 768px) {
       .main .container {
         border: 0; } }
-    .main .container .title {
+    .main .container .container-title {
       border-bottom: solid 1px #423413;
       background: #F2DAA5;
       margin-top: 0;

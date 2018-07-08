@@ -38,7 +38,7 @@ class Login extends Component {
 
     return (
       <div className="container login">
-        <h3 className="title">Login</h3>
+        <h3 className="container-title">Login</h3>
         <div className="content">
           <LoginErrorMessage
             shouldShow={this.props.showLoginErrorMessage}

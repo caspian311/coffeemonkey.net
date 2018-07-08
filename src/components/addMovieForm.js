@@ -11,15 +11,19 @@ class AddMovieForm extends Component {
 
     this.state = {
       newTitle: "",
+      newYear: "",
     };
   }
 
   newTitleChanged = e => {
     this.props.newTitleChangeDispatch(e.target.value);
   };
+  newYearChanged = e => {
+    this.props.newYearChangeDispatch(e.target.value);
+  };
 
-  addTitleClick = e => {
-    this.props.addNewTitleDispatch(this.props.newTitle);
+  addMovieClick = e => {
+    this.props.addNewMovieDispatch(this.props.newTitle, this.props.newYear);
   };
 
   errorMessage() {
@@ -36,10 +40,18 @@ class AddMovieForm extends Component {
         <input
           type="text"
           placeholder="Movie title"
+          className="title"
           onChange={this.newTitleChanged}
           value={this.props.newTitle}
         />
-        <input type="button" value="Add" onClick={this.addTitleClick} />
+        <input
+          type="text"
+          placeholder="Release year"
+          className="year"
+          onChange={this.newYearChanged}
+          value={this.props.newYear}
+        />
+        <input type="button" value="Add" onClick={this.addMovieClick} />
         {this.errorMessage()}
       </form>
     );
@@ -49,6 +61,7 @@ class AddMovieForm extends Component {
 function mapStateToProps(state) {
   return {
     newTitle: state.admin.newTitle,
+    newYear: state.admin.newYear,
     shouldShowError: state.admin.shouldShowError,
     errorMessage: state.admin.errorMessage,
   };
@@ -56,10 +69,15 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    newTitleChangeDispatch: newTitle =>
-      adminActions.newTitleChanged(dispatch, newTitle),
-    addNewTitleDispatch: newTitle =>
-      adminActions.addNewTitle(dispatch, newTitle),
+    newTitleChangeDispatch(newTitle) {
+      adminActions.newTitleChanged(dispatch, newTitle);
+    },
+    newYearChangeDispatch(newYear) {
+      adminActions.newYearChanged(dispatch, newYear);
+    },
+    addNewMovieDispatch(newTitle, newYear) {
+      adminActions.addNewMovie(dispatch, newTitle, newYear);
+    },
   };
 }
 

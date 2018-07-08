@@ -15,7 +15,7 @@ class Admin extends Component {
 
     return (
       <div className="container admin-movie">
-        <h3 className="title">Admin</h3>
+        <h3 className="container-title">Admin</h3>
         <div className="content">
           <AddMovieForm />
           <EditableMovieList />

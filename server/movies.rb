@@ -51,10 +51,16 @@ post '/movies' do
     halt 400
   end
 
+  unless valid_year?
+    puts '400: invalid year'
+    halt 400
+  end
+
   @@id += 1
   movie = {
     id: @@id,
-    title: @title
+    title: @title,
+    release_date: @release_date,
   }
 
   @@movies << movie
@@ -64,7 +70,7 @@ end
 
 delete '/movies/:movie_id' do |movie_id|
   halt_unless_valid_session
-  
+
   movie = @@movies.find{ |m| m[:id] == movie_id.to_i }
   unless movie
     halt 404
@@ -74,9 +80,18 @@ delete '/movies/:movie_id' do |movie_id|
   json movie
 end
 
+def data
+  @data ||= JSON.parse(request.body.read) rescue nil
+end
+
 def valid_title?
-  data = JSON.parse(request.body.read) rescue nil
   return false unless data
   @title = data["title"]
   @title.to_s.empty? == false
+end
+
+def valid_year?
+  return false unless data
+  @release_date = data["year"]
+  @release_date.to_s.empty? == false
 end

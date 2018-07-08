@@ -6,7 +6,7 @@ class Main extends Component {
   render() {
     return (
       <div className="container">
-        <h3 className="title">Favorite Movies</h3>
+        <h3 className="container-title">Favorite Movies</h3>
         <div className="content">
           <MovieList />
         </div>

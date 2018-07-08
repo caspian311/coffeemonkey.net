@@ -7,8 +7,8 @@ export function adminHeaders() {
   return { headers: { Authorization: auth.getToken() } };
 }
 
-export function addMovie(title) {
-  return axios.post(url, { title }, adminHeaders());
+export function addMovie(title, year) {
+  return axios.post(url, { title, year }, adminHeaders());
 }
 
 export function deleteMovie(movieId) {
