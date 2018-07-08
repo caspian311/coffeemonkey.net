@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import "../css/app.css";
+import "../css/avatar.css";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Component } from "react";
+
 import Admin from "./admin";
 import Banner from "./banner";
 import Login from "./login";
 import Main from "./main";
-import "../css/app.css";
+import Profile from "./profile";
 
 class App extends Component {
   render() {
@@ -16,6 +20,7 @@ class App extends Component {
             <Route exact={true} path="/" component={Main} />
             <Route exact={true} path="/login" component={Login} />
             <Route exact={true} path="/admin" component={Admin} />
+            <Route exact={true} path="/profile" component={Profile} />
             <Route
               exact={true}
               path="/contact"
