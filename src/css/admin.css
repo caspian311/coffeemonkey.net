@@ -2,11 +2,17 @@
   margin: 10px auto; }
   .admin-movie form input {
     display: inline; }
-    .admin-movie form input[type=text] {
+    .admin-movie form input.title {
       margin-right: 10px;
-      width: 380px; }
+      width: 250px; }
       @media (max-width: 400px) {
-        .admin-movie form input[type=text] {
+        .admin-movie form input.title {
+          width: 212px; } }
+    .admin-movie form input.year {
+      margin-right: 10px;
+      width: 108px; }
+      @media (max-width: 400px) {
+        .admin-movie form input.year {
           width: 212px; } }
 
 .admin-movie ul {
