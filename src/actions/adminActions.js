@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import Api from "../services/api";
+import * as api from "../services/api";
 import * as adminApi from "../services/admin_api";
 
 export function newTitleChanged(dispatch, newTitle) {
@@ -25,7 +25,7 @@ export function addNewTitle(dispatch, newTitle) {
 }
 
 export function populateMovieList(dispatch) {
-  Api.getMovies().then(movies => {
+  api.getMovies().then(movies => {
     dispatch({ type: types.MOVIES_LOADED, payload: { movies } });
   });
 }

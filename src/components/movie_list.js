@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Api from "../services/api";
+import * as api from "../services/api";
 
 function Movie(props) {
   return (
@@ -22,7 +22,7 @@ class MovieList extends Component {
   }
 
   populateMovies() {
-    Api.getMovies().then(
+    api.getMovies().then(
       function(movies) {
         this.setState(() => {
           let m = movies.map((movie, index) => {
