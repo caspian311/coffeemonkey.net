@@ -1,13 +1,14 @@
 import * as types from "./actionTypes";
 import Api from "../services/api";
-import AdminApi from "../services/admin_api";
+import * as adminApi from "../services/admin_api";
 
 export function newTitleChanged(dispatch, newTitle) {
   dispatch({ type: types.NEW_TITLE_CHANGED, payload: { newTitle } });
 }
 
 export function addNewTitle(dispatch, newTitle) {
-  AdminApi.addMovie(newTitle)
+  adminApi
+    .addMovie(newTitle)
     .catch(response => {
       const errorMessage = "An error occurred while trying to add your title.";
       dispatch({
@@ -30,7 +31,8 @@ export function populateMovieList(dispatch) {
 }
 
 export function deleteMovie(dispatch, movieId) {
-  AdminApi.deleteMovie(movieId)
+  adminApi
+    .deleteMovie(movieId)
     .catch(response => {
       const errorMessage = "An error occurred while deleting a movie.";
       dispatch({

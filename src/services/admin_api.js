@@ -3,18 +3,14 @@ let axios = require("axios");
 
 const url = "http://localhost:4567/movies";
 
-class AdminApi {
-  static adminHeaders() {
-    return { headers: { Authorization: Auth.getToken() } };
-  }
-
-  static addMovie(title) {
-    return axios.post(url, { title }, AdminApi.adminHeaders());
-  }
-
-  static deleteMovie(movieId) {
-    return axios.delete(url + "/" + movieId, AdminApi.adminHeaders());
-  }
+export function adminHeaders() {
+  return { headers: { Authorization: Auth.getToken() } };
 }
 
-export default AdminApi;
+export function addMovie(title) {
+  return axios.post(url, { title }, adminHeaders());
+}
+
+export function deleteMovie(movieId) {
+  return axios.delete(url + "/" + movieId, adminHeaders());
+}
