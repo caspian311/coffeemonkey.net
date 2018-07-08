@@ -9,8 +9,6 @@ import {
 export default function login(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      console.log("login successful");
-
       return {
         ...state,
         showLoginErrorMessage: false,
@@ -18,7 +16,6 @@ export default function login(state = initialState, action) {
         user: action.payload.user,
       };
     case BAD_LOGIN:
-      console.log("login failed");
       return {
         ...state,
         showLoginErrorMessage: true,
