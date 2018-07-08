@@ -35,7 +35,9 @@ class EditableMovieList extends Component {
           this.props.movies.map((movie, index) => {
             return (
               <li key={index} className={this.classNameFromIndex(index)}>
-                <span>{movie.title}</span>
+                <span>
+                  {movie.title} ({movie.release_date})
+                </span>
                 <a href="#blah" onClick={() => this.deleteMovie(movie.id)}>
                   X
                 </a>
