@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
-import LoginService from "../login_service";
-import Auth from "../auth";
+import LoginService from "../services/login_service";
+import Auth from "../services/auth";
 
 export function login(dispatch, username, password) {
   LoginService.login(username, password)

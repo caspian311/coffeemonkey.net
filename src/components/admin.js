@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 
 import AddMovieForm from "./addMovieForm";
-import Auth from "../auth";
+import Auth from "../services/auth";
 import EditableMovieList from "./editableMovieList";
 
 class Admin extends Component {

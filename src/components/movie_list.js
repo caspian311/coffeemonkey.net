@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Api from "../api";
+import Api from "../services/api";
 
 function Movie(props) {
   return (

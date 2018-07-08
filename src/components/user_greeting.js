@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Auth from "../auth";
+import Auth from "../services/auth";
 import LogoutButton from "./logoutButton";
 
 class UserGreeting extends Component {

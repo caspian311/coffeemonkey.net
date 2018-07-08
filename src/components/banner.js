@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import Auth from "../auth";
+import Auth from "../services/auth";
 import Greeting from "./greeting";
 
 import "../css/banner.css";
