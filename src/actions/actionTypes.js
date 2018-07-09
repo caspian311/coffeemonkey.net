@@ -8,3 +8,4 @@ export const NEW_YEAR_CHANGED = "NEW_YEAR_CHANGED";
 export const NEW_MOVIE_ADDED = "NEW_MOVIE_ADDED";
 export const ADMIN_ERROR = "ADMIN_ERROR";
 export const TITLE_REMOVED = "TITLE_REMOVED";
+export const AVATAR_CHANGED = "AVATAR_CHANGED";

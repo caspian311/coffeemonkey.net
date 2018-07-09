@@ -9,6 +9,7 @@ import Banner from "./banner";
 import Login from "./login";
 import Main from "./main";
 import Profile from "./profile";
+import Footer from "./footer";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
               render={() => <h1>Coming soon...</h1>}
             />
           </div>
+          <Footer />
         </div>
       </Router>
     );
