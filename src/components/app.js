@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="foo">
           <Route component={Banner} />
           <Route
             exact={true}
