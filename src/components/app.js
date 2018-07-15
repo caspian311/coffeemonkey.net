@@ -36,11 +36,6 @@ class App extends Component {
             path="/profile"
             render={props => <Profile needsFooter={true} />}
           />
-          <Route
-            exact={true}
-            path="/contact"
-            render={() => <h1>Coming soon...</h1>}
-          />
         </div>
       </Router>
     );
