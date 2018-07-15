@@ -1,16 +1,17 @@
 import { connect } from "react-redux";
-import React, { Component } from "react";
+import React from "react";
 
+import AppPage from "./appPage";
 import * as profileActions from "../actions/profileActions";
 
-class Profile extends Component {
+class Profile extends AppPage {
   selectAvatar = e => {
     const selectedAvatar = e.target.value;
 
     this.props.selectAvatarDispatch(selectedAvatar);
   };
 
-  render() {
+  pageContents() {
     return (
       <div className="container">
         <h3 className="container-title">Profile</h3>

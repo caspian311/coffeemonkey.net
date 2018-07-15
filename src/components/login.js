@@ -1,21 +1,15 @@
-import { connect } from "react-redux";
-import React, { Component } from "react";
-import * as loginActions from "../actions/loginActions";
-import LoginErrorMessage from "./loginErrorMessage";
-import { Redirect } from "react-router-dom";
-
 import "../css/forms.css";
 import "../css/login.css";
 
-class Login extends Component {
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.state = {
-  //     shouldGoToAdmin: false,
-  //   };
-  // }
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import React from "react";
 
+import AppPage from "./appPage";
+import LoginErrorMessage from "./loginErrorMessage";
+import * as loginActions from "../actions/loginActions";
+
+class Login extends AppPage {
   handleSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -31,7 +25,7 @@ class Login extends Component {
     this.props.passwordChangedDispatch(e.target.value);
   };
 
-  render() {
+  pageContents() {
     if (this.props.shouldGoToAdmin) {
       return <Redirect to={"/admin"} />;
     }

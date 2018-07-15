@@ -9,7 +9,6 @@ import Banner from "./banner";
 import Login from "./login";
 import Main from "./main";
 import Profile from "./profile";
-import Footer from "./footer";
 
 class App extends Component {
   render() {
@@ -17,18 +16,31 @@ class App extends Component {
       <Router>
         <div>
           <Route component={Banner} />
-          <div className="main">
-            <Route exact={true} path="/" component={Main} />
-            <Route exact={true} path="/login" component={Login} />
-            <Route exact={true} path="/admin" component={Admin} />
-            <Route exact={true} path="/profile" component={Profile} />
-            <Route
-              exact={true}
-              path="/contact"
-              render={() => <h1>Coming soon...</h1>}
-            />
-          </div>
-          <Footer />
+          <Route
+            exact={true}
+            path="/"
+            render={props => <Main needsFooter={false} />}
+          />
+          <Route
+            exact={true}
+            path="/login"
+            render={props => <Login needsFooter={false} />}
+          />
+          <Route
+            exact={true}
+            path="/admin"
+            render={props => <Admin needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/profile"
+            render={props => <Profile needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/contact"
+            render={() => <h1>Coming soon...</h1>}
+          />
         </div>
       </Router>
     );
