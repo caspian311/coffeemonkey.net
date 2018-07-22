@@ -1,3 +1,6 @@
+import "../css/forms.css";
+import "../css/profile.css";
+
 import { connect } from "react-redux";
 import React from "react";
 
@@ -26,7 +29,7 @@ class Profile extends AppPage {
     return (
       <div className="container">
         <h3 className="container-title">Profile</h3>
-        <div className="content">
+        <div className={("content", "profile")}>
           <form onSubmit={this.profileFormSubmit}>
             <label htmlFor="firstName">First name</label>
             <input

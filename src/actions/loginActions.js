@@ -14,14 +14,6 @@ export function login(dispatch, username, password) {
     });
 }
 
-export function usernameChanged(dispatch, username) {
-  dispatch({ type: types.USERNAME_CHANGED, payload: { username } });
-}
-
-export function passwordChanged(dispatch, password) {
-  dispatch({ type: types.PASSWORD_CHANGED, payload: { password } });
-}
-
 export function badLogin(dispatch) {
   dispatch({ type: types.BAD_LOGIN });
 }
