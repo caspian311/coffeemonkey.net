@@ -1,5 +1,5 @@
-import initialState from "./initialLoginState";
 import { LOGIN, BAD_LOGIN } from "../actions/actionTypes";
+import initialState from "./initialLoginState";
 
 export default function login(state = initialState, action) {
   switch (action.type) {
