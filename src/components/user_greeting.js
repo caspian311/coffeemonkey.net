@@ -1,24 +1,27 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+
+import Dropdown from "./dropdown";
 import * as auth from "../services/auth";
-import LogoutButton from "./logoutButton";
 
 class UserGreeting extends Component {
+  profile = () => {
+    this.props.history.push("/profile");
+  };
+
+  logout = () => {
+    auth.logout();
+    this.props.history.push("/login");
+  };
+
   render() {
-    return (
-      <ul className="actions">
-        <li>
-          Welcome, {this.props.firstName} {this.props.lastName}!
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-      </ul>
-    );
+    const title = `Welcome, ${this.props.firstName} ${this.props.lastName}!`;
+    const list = [
+      { title: "Profile", action: this.profile },
+      { title: "Logout", action: this.logout },
+    ];
+    return <Dropdown title={title} list={list} />;
   }
 }
 
