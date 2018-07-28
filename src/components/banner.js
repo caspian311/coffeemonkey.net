@@ -7,19 +7,13 @@ import Greeting from "./greeting";
 import "../css/banner.css";
 
 class Banner extends Component {
-  constructor(props) {
-    super(props);
-
-    this.homePath = this.homePath.bind(this);
-  }
-
-  homePath() {
+  homePath = () => {
     if (auth.isAuthenticated()) {
       return "/admin";
     } else {
       return "/";
     }
-  }
+  };
 
   render() {
     return (
@@ -30,7 +24,7 @@ class Banner extends Component {
             <h1 className="title">Coffee Monkey!</h1>
           </Link>
         </div>
-        <Greeting history={this.props.history} />
+        <Greeting />
       </div>
     );
   }
