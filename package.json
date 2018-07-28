@@ -4,6 +4,10 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "autoprefixer": "7.1.2",
     "axios": "^0.17.0",
     "babel-core": "^6.26.3",
@@ -111,5 +115,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/caspian311/coffeemonkey.net/issues"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.2.0"
   }
 }

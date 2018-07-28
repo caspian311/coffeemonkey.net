@@ -1,17 +1,25 @@
 $bright-orange: #F2C052
 $dark-brown: #423413
+$white: #fff
 
 .dd-wrapper
   float: right
-  margin: 15px
+  background: $bright-orange
   .dd-header
-    font-size: 20pt
+    font-size: 12pt
+    padding: 15px 15px 0 15px
     .dd-header-title
       display: inline
-      font-size: 12pt
       margin-right: 10px
   .dd-list
     list-style-type: none
     padding-left: 0
+    margin-bottom: 0
   .dd-list-item
-    padding-left: 10px
+    padding: 10px
+    &:hover
+      background: $white
+  &.open
+    border-style: solid
+    border-color: $dark-brown
+    border-width: 1px

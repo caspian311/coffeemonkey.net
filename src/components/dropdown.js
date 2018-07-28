@@ -1,7 +1,10 @@
+import "../css/dropdown.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import onClickOutside from "react-onclickoutside";
 
-import "../css/dropdown.css";
+import { faAngleUp, faAngleDown } from "@fortawesome/fontawesome-free-solid";
 
 class Dropdown extends Component {
   constructor(props) {
@@ -27,12 +30,14 @@ class Dropdown extends Component {
   render() {
     const { list } = this.props;
     const { listOpen, headerTitle } = this.state;
+    const wrapperClassName = listOpen ? "dd-wrapper open" : "dd-wrapper";
+    const ddIcon = listOpen ? faAngleUp : faAngleDown;
 
     return (
-      <div className="dd-wrapper">
+      <div className={wrapperClassName}>
         <div className="dd-header" onClick={() => this.toggleList()}>
           <div className="dd-header-title">{headerTitle}</div>
-          {listOpen ? "^" : "v"}
+          <FontAwesomeIcon icon={ddIcon} />
         </div>
         {listOpen && (
           <ul className="dd-list">
