@@ -1,0 +1,14 @@
+.dd-wrapper {
+  float: right;
+  margin: 15px; }
+  .dd-wrapper .dd-header {
+    font-size: 20pt; }
+    .dd-wrapper .dd-header .dd-header-title {
+      display: inline;
+      font-size: 12pt;
+      margin-right: 10px; }
+  .dd-wrapper .dd-list {
+    list-style-type: none;
+    padding-left: 0; }
+  .dd-wrapper .dd-list-item {
+    padding-left: 10px; }

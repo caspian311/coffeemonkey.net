@@ -20,6 +20,11 @@ class UserGreeting extends Component {
     const list = [
       { title: "Profile", action: this.profile },
       { title: "Logout", action: this.logout },
+      { title: "Logout", action: this.logout },
+      { title: "Logout", action: this.logout },
+      { title: "Logout", action: this.logout },
+      { title: "Logout", action: this.logout },
+      { title: "Logout", action: this.logout },
     ];
     return <Dropdown title={title} list={list} />;
   }
