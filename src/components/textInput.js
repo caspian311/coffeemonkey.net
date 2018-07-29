@@ -1,3 +1,5 @@
+import "../css/textInput.css";
+
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
@@ -33,7 +35,14 @@ class TextInput extends Component {
   };
 
   render() {
-    return this.props.password ? this.passwordInput() : this.textInput();
+    return (
+      <div>
+        {this.props.withLabel && (
+          <label htmlFor={this.props.id}>{this.props.placeholder}</label>
+        )}
+        {this.props.password ? this.passwordInput() : this.textInput()}
+      </div>
+    );
   }
 }
 

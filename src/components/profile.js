@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import React from "react";
 
 import AppPage from "./appPage";
+import TextInput from "./textInput";
 import * as profileActions from "../actions/profileActions";
 
 class Profile extends AppPage {
@@ -31,38 +32,45 @@ class Profile extends AppPage {
         <h3 className="container-title">Profile</h3>
         <div className={("content", "profile")}>
           <form onSubmit={this.profileFormSubmit}>
-            <label htmlFor="firstName">First name</label>
-            <input
-              id="firstName"
-              type="text"
-              value={this.props.firstName}
+            <TextInput
               placeholder="First name"
+              id="profile-firstname"
+              value={this.props.firstname}
+              withLabel={true}
             />
 
-            <label htmlFor="lastName">Last name</label>
-            <input
-              id="lastName"
-              type="text"
-              value={this.props.lastName}
-              placeholder="First name"
+            <TextInput
+              placeholder="Last name"
+              id="profile-lastname"
+              value={this.props.lastname}
+              withLabel={true}
             />
-            <label htmlFor="password">Password</label>
-            <input id="password" type="password" value={this.props.password} />
-            <label htmlFor="avatar">Profile picture</label>
-            <select
-              id="avatar"
-              value={this.props.selectedAvatar}
-              onChange={this.selectAvatar}
-            >
-              {this.props.avatars.map((avatar, index) => {
-                return (
-                  <option key={index} value={avatar}>
-                    {avatar}
-                  </option>
-                );
-              })}
-            </select>
-            <div className={`avatar ${this.props.selectedAvatar}`} />
+
+            <TextInput
+              placeholder="Password"
+              id="profile-password"
+              value={this.props.password}
+              withLabel={true}
+            />
+
+            <div>
+              <label htmlFor="avatar">Profile picture</label>
+              <select
+                id="avatar"
+                value={this.props.selectedAvatar}
+                onChange={this.selectAvatar}
+              >
+                {this.props.avatars.map((avatar, index) => {
+                  return (
+                    <option key={index} value={avatar}>
+                      {avatar}
+                    </option>
+                  );
+                })}
+              </select>
+              <div className={`avatar ${this.props.selectedAvatar}`} />
+            </div>
+
             <input type="submit" value="Save Changes" />
             <button onClick={this.cancel}>Cancel</button>
           </form>

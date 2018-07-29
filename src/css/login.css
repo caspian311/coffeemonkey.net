@@ -4,9 +4,7 @@
   display: block; }
 
 .login form input {
-  display: block;
-  margin: 10px auto;
-  min-width: 250px; }
+  display: block; }
   .login form input[type=submit], .login form input[type=button] {
     float: right;
     margin: 10px 10px 10px 0;
