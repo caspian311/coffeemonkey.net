@@ -10,37 +10,46 @@ class TextInput extends Component {
     this.props.valueChanged(e.target.id, e.target.value);
   };
 
-  textInput = () => {
+  textInput = onChangeListener => {
     return (
       <input
         id={this.props.id}
         type="text"
         value={this.props.value || ""}
-        placeholder={this.props.placeholder}
-        onChange={this.valueChanged}
+        placeholder={this.props.withLabel ? undefined : this.props.placeholder}
+        onChange={e => {
+          this.valueChanged(e);
+          onChangeListener && onChangeListener();
+        }}
       />
     );
   };
 
-  passwordInput = () => {
+  passwordInput = onChangeListener => {
     return (
       <input
         id={this.props.id}
         type="password"
         value={this.props.value || ""}
-        placeholder={this.props.placeholder}
-        onChange={this.valueChanged}
+        placeholder={this.props.withLabel ? undefined : this.props.placeholder}
+        onChange={e => {
+          this.valueChanged(e);
+          onChangeListener && onChangeListener();
+        }}
       />
     );
   };
 
   render() {
+    const { onChangeListener } = this.props;
     return (
       <div>
         {this.props.withLabel && (
           <label htmlFor={this.props.id}>{this.props.placeholder}</label>
         )}
-        {this.props.password ? this.passwordInput() : this.textInput()}
+        {this.props.password
+          ? this.passwordInput(onChangeListener)
+          : this.textInput(onChangeListener)}
       </div>
     );
   }

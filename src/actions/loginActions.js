@@ -14,6 +14,18 @@ export function login(dispatch, username, password) {
     });
 }
 
+export function loginSuccess(dispatch) {
+  dispatch({ type: types.LOGIN_SUCCESS, payload: {} });
+  dispatch({
+    type: types.INPUT_VALUE_CHANGED,
+    payload: { id: "login-username", value: "" },
+  });
+  dispatch({
+    type: types.INPUT_VALUE_CHANGED,
+    payload: { id: "login-password", value: "" },
+  });
+}
+
 export function badLogin(dispatch) {
   dispatch({ type: types.BAD_LOGIN });
 }

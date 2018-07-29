@@ -2,19 +2,14 @@ import "../css/forms.css";
 import "../css/profile.css";
 
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import React from "react";
 
 import AppPage from "./appPage";
+import ProfileAvatarSelector from "./profileAvatarSelector";
 import TextInput from "./textInput";
-import * as profileActions from "../actions/profileActions";
 
 class Profile extends AppPage {
-  selectAvatar = e => {
-    const selectedAvatar = e.target.value;
-
-    this.props.selectAvatarDispatch(selectedAvatar);
-  };
-
   profileFormSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -23,7 +18,10 @@ class Profile extends AppPage {
   };
 
   cancel = e => {
-    console.log("cancel action");
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.props.history.goBack();
   };
 
   pageContents() {
@@ -53,23 +51,7 @@ class Profile extends AppPage {
               withLabel={true}
             />
 
-            <div>
-              <label htmlFor="avatar">Profile picture</label>
-              <select
-                id="avatar"
-                value={this.props.selectedAvatar}
-                onChange={this.selectAvatar}
-              >
-                {this.props.avatars.map((avatar, index) => {
-                  return (
-                    <option key={index} value={avatar}>
-                      {avatar}
-                    </option>
-                  );
-                })}
-              </select>
-              <div className={`avatar ${this.props.selectedAvatar}`} />
-            </div>
+            <ProfileAvatarSelector />
 
             <input type="submit" value="Save Changes" />
             <button onClick={this.cancel}>Cancel</button>
@@ -81,21 +63,16 @@ class Profile extends AppPage {
 }
 
 function mapStateToProps(state) {
-  return {
-    avatars: state.profile.avatars,
-    selectedAvatar: state.profile.selectedAvatar,
-  };
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    selectAvatarDispatch(selectedAvatar) {
-      profileActions.selectAvatar(dispatch, selectedAvatar);
-    },
-  };
+  return {};
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Profile);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Profile)
+);

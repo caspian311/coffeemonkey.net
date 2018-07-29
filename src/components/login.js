@@ -1,8 +1,8 @@
 import "../css/forms.css";
 import "../css/login.css";
 
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import React from "react";
 
 import AppPage from "./appPage";
@@ -20,7 +20,8 @@ class Login extends AppPage {
 
   pageContents() {
     if (this.props.shouldGoToAdmin) {
-      return <Redirect to={"/admin"} />;
+      this.props.loginSuccessDispatch();
+      this.props.history.push("/admin");
     }
 
     return (
@@ -65,10 +66,13 @@ function mapDispatchToProps(dispatch) {
   return {
     loginDispatch: (username, password) =>
       loginActions.login(dispatch, username, password),
+    loginSuccessDispatch: () => loginActions.loginSuccess(dispatch),
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);

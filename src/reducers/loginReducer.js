@@ -1,4 +1,4 @@
-import { LOGIN, BAD_LOGIN } from "../actions/actionTypes";
+import { LOGIN, BAD_LOGIN, LOGIN_SUCCESS } from "../actions/actionTypes";
 import initialState from "./initialLoginState";
 
 export default function login(state = initialState, action) {
@@ -9,6 +9,11 @@ export default function login(state = initialState, action) {
         showLoginErrorMessage: false,
         shouldGoToAdmin: true,
         user: action.payload.user,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        shouldGoToAdmin: false,
       };
     case BAD_LOGIN:
       return {
