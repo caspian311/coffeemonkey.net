@@ -16,15 +16,18 @@ class Dropdown extends Component {
   }
 
   handleClickOutside() {
-    this.setState({
-      listOpen: false,
-    });
+    this.setState({ listOpen: false });
   }
 
   toggleList() {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen,
     }));
+  }
+
+  clickListener(item) {
+    this.setState({ listOpen: false });
+    item.action();
   }
 
   render() {
@@ -46,7 +49,7 @@ class Dropdown extends Component {
                 className="dd-list-item"
                 key={item.title}
                 onClick={() => {
-                  item.action();
+                  this.clickListener(item);
                 }}
               >
                 {item.title}
