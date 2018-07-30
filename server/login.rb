@@ -16,6 +16,7 @@ post '/login' do
   payload = { authToken: auth_token,
               firstName: Faker::Name.first_name,
               lastName: Faker::Name.last_name,
+              selectedAvatar: "a-06",
               expiresAt: 5.minutes.from_now.utc.to_i }
   @@sessions[auth_token] = payload
 

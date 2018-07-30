@@ -26,7 +26,7 @@ class Profile extends AdminPage {
     this.props.history.goBack();
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadProfileDispatch();
   }
 
@@ -53,6 +53,7 @@ class Profile extends AdminPage {
             <TextInput
               placeholder="Password"
               id="profile-password"
+              password={true}
               value={this.props.password}
               withLabel={true}
             />
@@ -72,6 +73,7 @@ function mapStateToProps(state) {
   return {
     firstname: state.textInput["profile-firstname"],
     lastname: state.textInput["profile-lastname"],
+    password: state.textInput["profile-password"],
   };
 }
 

@@ -28,13 +28,17 @@ class ProfileAvatarSelector extends Component {
         <label htmlFor="avatar">Profile picture</label>
         <select
           id="avatar"
-          value={this.props.selectedAvatar}
           onChange={this.selectAvatar}
+          value={this.props.selectedAvatar}
           onKeyPress={this.avatarKeyPress}
         >
           {this.props.avatars.map((avatar, index) => {
             return (
-              <option key={index} value={avatar}>
+              <option
+                key={index}
+                value={avatar}
+                checked={this.props.selectedAvatar === avatar}
+              >
                 {avatar}
               </option>
             );

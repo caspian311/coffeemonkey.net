@@ -8,6 +8,11 @@ export default function profile(state = initialState, action) {
         ...state,
         selectedAvatar: action.payload.selectedAvatar,
       };
+    case types.PROFILE_LOADED:
+      return {
+        ...state,
+        selectedAvatar: action.payload.selectedAvatar,
+      };
     default:
       return state;
   }

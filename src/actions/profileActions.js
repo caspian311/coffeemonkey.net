@@ -7,6 +7,18 @@ export function selectAvatar(dispatch, selectedAvatar) {
 
 export function loadProfile(dispatch) {
   adminApi.getProfile().then(profile => {
-    dispatch({ type: types.PROFILE_LOADED, payload: profile });
+    dispatch({
+      type: types.INPUT_VALUE_CHANGED,
+      payload: { id: "profile-firstname", value: profile.data.firstName },
+    });
+    dispatch({
+      type: types.INPUT_VALUE_CHANGED,
+      payload: { id: "profile-lastname", value: profile.data.lastName },
+    });
+    dispatch({
+      type: types.INPUT_VALUE_CHANGED,
+      payload: { id: "profile-password", value: "blah blah blah" },
+    });
+    dispatch({ type: types.PROFILE_LOADED, payload: profile.data });
   });
 }

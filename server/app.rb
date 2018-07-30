@@ -43,3 +43,4 @@ end
 
 require './login'
 require './movies'
+require './profile'
