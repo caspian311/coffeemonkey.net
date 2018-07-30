@@ -5,3 +5,13 @@ input[type=submit], input[type=button] {
   font-size: 16px;
   background: #F2C052;
   text-transform: uppercase; }
+
+button {
+  float: right;
+  margin: 10px 10px 10px 0;
+  text-transform: uppercase;
+  min-width: 150px;
+  font-size: 16px;
+  border-radius: 2px;
+  border: solid 1px #423413;
+  padding: 10px; }
