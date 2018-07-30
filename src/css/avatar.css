@@ -1,7 +1,6 @@
 .avatar {
   width: 150px;
   height: 150px;
-  border: 1px solid black;
   background: url(../images/avatars.jpg); }
   .avatar.a-01 {
     background-position: -55px -42px; }

@@ -5,11 +5,13 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import React from "react";
 
-import AppPage from "./appPage";
+import AdminPage from "./adminPage";
 import ProfileAvatarSelector from "./profileAvatarSelector";
 import TextInput from "./textInput";
 
-class Profile extends AppPage {
+import * as profileActions from "../actions/profileActions";
+
+class Profile extends AdminPage {
   profileFormSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -24,7 +26,11 @@ class Profile extends AppPage {
     this.props.history.goBack();
   };
 
-  pageContents() {
+  componentDidMount() {
+    this.props.loadProfileDispatch();
+  }
+
+  adminContents() {
     return (
       <div className="container">
         <h3 className="container-title">Profile</h3>
@@ -63,11 +69,18 @@ class Profile extends AppPage {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    firstname: state.textInput["profile-firstname"],
+    lastname: state.textInput["profile-lastname"],
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    loadProfileDispatch() {
+      profileActions.loadProfile(dispatch);
+    },
+  };
 }
 
 export default withRouter(

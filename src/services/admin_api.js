@@ -1,16 +1,22 @@
 import * as auth from "./auth";
 let axios = require("axios");
 
-const url = "http://localhost:4567/movies";
+const baseUrl = "http://localhost:4567";
+const moviesUrl = `${baseUrl}/movies`;
+const profileUrl = `${baseUrl}/profile`;
 
 export function adminHeaders() {
   return { headers: { Authorization: auth.getToken() } };
 }
 
 export function addMovie(title, year) {
-  return axios.post(url, { title, year }, adminHeaders());
+  return axios.post(moviesUrl, { title, year }, adminHeaders());
 }
 
 export function deleteMovie(movieId) {
-  return axios.delete(url + "/" + movieId, adminHeaders());
+  return axios.delete(moviesUrl + "/" + movieId, adminHeaders());
+}
+
+export function getProfile() {
+  return axios.get(profileUrl, adminHeaders());
 }

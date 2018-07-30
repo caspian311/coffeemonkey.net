@@ -12,6 +12,16 @@ class ProfileAvatarSelector extends Component {
     this.props.selectAvatarDispatch(selectedAvatar);
   };
 
+  avatarKeyPress = e => {
+    if ("createEvent" in document) {
+      var evt = document.createEvent("HTMLEvents");
+      evt.initEvent("change", false, true);
+      e.target.dispatchEvent(evt);
+    } else {
+      e.target.fireEvent("onchange");
+    }
+  };
+
   render() {
     return (
       <div className="profile-avatar">
@@ -20,6 +30,7 @@ class ProfileAvatarSelector extends Component {
           id="avatar"
           value={this.props.selectedAvatar}
           onChange={this.selectAvatar}
+          onKeyPress={this.avatarKeyPress}
         >
           {this.props.avatars.map((avatar, index) => {
             return (
