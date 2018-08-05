@@ -20,3 +20,7 @@ export function deleteMovie(movieId) {
 export function getProfile() {
   return axios.get(profileUrl, adminHeaders());
 }
+
+export function updateProfile(profile) {
+  return axios.put(profileUrl, profile, adminHeaders());
+}

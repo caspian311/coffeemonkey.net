@@ -16,7 +16,13 @@ class Profile extends AdminPage {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log("saving profile...");
+    const profile = {
+      firstName: this.props.firstname,
+      lastName: this.props.lastname,
+      password: this.props.password,
+      avatar: this.props.avatar,
+    };
+    this.props.updateProfileDispatch(profile);
   };
 
   cancel = e => {
@@ -60,7 +66,11 @@ class Profile extends AdminPage {
 
             <ProfileAvatarSelector />
 
-            <input type="submit" value="Save Changes" />
+            <input
+              type="submit"
+              value="Save Changes"
+              disabled={this.props.shouldDisableSubmit}
+            />
             <button onClick={this.cancel}>Cancel</button>
           </form>
         </div>
@@ -74,6 +84,8 @@ function mapStateToProps(state) {
     firstname: state.textInput["profile-firstname"],
     lastname: state.textInput["profile-lastname"],
     password: state.textInput["profile-password"],
+    avatar: state.profile.selectedAvatar,
+    shouldDisableSubmit: state.profile.shouldDisableSubmit,
   };
 }
 
@@ -81,6 +93,9 @@ function mapDispatchToProps(dispatch) {
   return {
     loadProfileDispatch() {
       profileActions.loadProfile(dispatch);
+    },
+    updateProfileDispatch(profile) {
+      profileActions.updateProfile(dispatch, profile);
     },
   };
 }

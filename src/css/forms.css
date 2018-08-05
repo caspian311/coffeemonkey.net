@@ -5,6 +5,10 @@ input[type=submit], input[type=button] {
   font-size: 16px;
   background: #F2C052;
   text-transform: uppercase; }
+  input[type=submit]:disabled, input[type=button]:disabled {
+    background: #ddd;
+    color: #888;
+    border-color: #888; }
 
 button {
   float: right;

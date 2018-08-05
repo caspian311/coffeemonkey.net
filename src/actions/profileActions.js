@@ -1,8 +1,15 @@
 import * as types from "./actionTypes";
-import * as adminApi from "../services/admin_api";
+import * as adminApi from "../services/adminApi";
 
 export function selectAvatar(dispatch, selectedAvatar) {
   dispatch({ type: types.AVATAR_CHANGED, payload: { selectedAvatar } });
+}
+
+export function updateProfile(dispatch, profile) {
+  dispatch({ type: types.FORM_SAVING });
+  adminApi.updateProfile(profile).then(() => {
+    dispatch({ type: types.PROFILE_SAVED });
+  });
 }
 
 export function loadProfile(dispatch) {

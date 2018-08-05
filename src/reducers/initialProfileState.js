@@ -18,4 +18,5 @@ export default {
     "a-16",
   ],
   selectedAvatar: "a-01",
+  shouldDisableSubmit: false,
 };

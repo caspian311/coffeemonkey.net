@@ -13,6 +13,16 @@ export default function profile(state = initialState, action) {
         ...state,
         selectedAvatar: action.payload.selectedAvatar,
       };
+    case types.FORM_SAVING:
+      return {
+        ...state,
+        shouldDisableSubmit: true,
+      };
+    case types.PROFILE_SAVED:
+      return {
+        ...state,
+        shouldDisableSubmit: false,
+      };
     default:
       return state;
   }
