@@ -22,6 +22,7 @@ export default function profile(state = initialState, action) {
       return {
         ...state,
         shouldDisableSubmit: false,
+        hasChangedPassword: false,
       };
     default:
       return state;

@@ -19,7 +19,7 @@ class TextInput extends Component {
         placeholder={this.props.withLabel ? undefined : this.props.placeholder}
         onChange={e => {
           this.valueChanged(e);
-          onChangeListener && onChangeListener();
+          onChangeListener && onChangeListener(e);
         }}
       />
     );
@@ -34,7 +34,7 @@ class TextInput extends Component {
         placeholder={this.props.withLabel ? undefined : this.props.placeholder}
         onChange={e => {
           this.valueChanged(e);
-          onChangeListener && onChangeListener();
+          onChangeListener && onChangeListener(e);
         }}
       />
     );

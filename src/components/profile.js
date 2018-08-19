@@ -19,8 +19,7 @@ class Profile extends AdminPage {
     const profile = {
       firstName: this.props.firstname,
       lastName: this.props.lastname,
-      password: this.props.password,
-      avatar: this.props.avatar,
+      selectedAvatar: this.props.selectedAvatar,
     };
     this.props.updateProfileDispatch(profile);
   };
@@ -56,14 +55,6 @@ class Profile extends AdminPage {
               withLabel={true}
             />
 
-            <TextInput
-              placeholder="Password"
-              id="profile-password"
-              password={true}
-              value={this.props.password}
-              withLabel={true}
-            />
-
             <ProfileAvatarSelector />
 
             <input
@@ -83,8 +74,7 @@ function mapStateToProps(state) {
   return {
     firstname: state.textInput["profile-firstname"],
     lastname: state.textInput["profile-lastname"],
-    password: state.textInput["profile-password"],
-    avatar: state.profile.selectedAvatar,
+    selectedAvatar: state.profile.selectedAvatar,
     shouldDisableSubmit: state.profile.shouldDisableSubmit,
   };
 }
