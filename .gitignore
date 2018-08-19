@@ -21,3 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 
 **/.byebug_history
+
+*.sqlite3
