@@ -80,10 +80,6 @@ delete '/movies/:movie_id' do |movie_id|
   json movie
 end
 
-def data
-  @data ||= JSON.parse(request.body.read) rescue nil
-end
-
 def valid_title?
   return false unless data
   @title = data["title"]
