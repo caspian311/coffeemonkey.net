@@ -2,68 +2,66 @@ import "../css/forms.css";
 import "../css/profile.css";
 
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import React from "react";
 
-import AppPage from "./appPage";
+import AdminPage from "./adminPage";
+import ProfileAvatarSelector from "./profileAvatarSelector";
+import TextInput from "./textInput";
+
 import * as profileActions from "../actions/profileActions";
 
-class Profile extends AppPage {
-  selectAvatar = e => {
-    const selectedAvatar = e.target.value;
-
-    this.props.selectAvatarDispatch(selectedAvatar);
-  };
-
+class Profile extends AdminPage {
   profileFormSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log("saving profile...");
+    const profile = {
+      firstName: this.props.firstname,
+      lastName: this.props.lastname,
+      selectedAvatar: this.props.selectedAvatar,
+    };
+    this.props.updateProfileDispatch(profile);
   };
 
   cancel = e => {
-    console.log("cancel action");
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.props.history.goBack();
   };
 
-  pageContents() {
+  componentWillMount() {
+    this.props.loadProfileDispatch();
+  }
+
+  adminContents() {
     return (
       <div className="container">
         <h3 className="container-title">Profile</h3>
         <div className={("content", "profile")}>
           <form onSubmit={this.profileFormSubmit}>
-            <label htmlFor="firstName">First name</label>
-            <input
-              id="firstName"
-              type="text"
-              value={this.props.firstName}
+            <TextInput
               placeholder="First name"
+              id="profile-firstname"
+              value={this.props.firstname}
+              withLabel={true}
             />
 
-            <label htmlFor="lastName">Last name</label>
-            <input
-              id="lastName"
-              type="text"
-              value={this.props.lastName}
-              placeholder="First name"
+            <TextInput
+              placeholder="Last name"
+              id="profile-lastname"
+              value={this.props.lastname}
+              withLabel={true}
             />
-            <label htmlFor="password">Password</label>
-            <input id="password" type="password" value={this.props.password} />
-            <label htmlFor="avatar">Profile picture</label>
-            <select
-              id="avatar"
-              value={this.props.selectedAvatar}
-              onChange={this.selectAvatar}
-            >
-              {this.props.avatars.map((avatar, index) => {
-                return (
-                  <option key={index} value={avatar}>
-                    {avatar}
-                  </option>
-                );
-              })}
-            </select>
-            <div className={`avatar ${this.props.selectedAvatar}`} />
-            <input type="submit" value="Save Changes" />
+
+            <ProfileAvatarSelector />
+
+            <input
+              type="submit"
+              value="Save Changes"
+              disabled={this.props.shouldDisableSubmit}
+            />
             <button onClick={this.cancel}>Cancel</button>
           </form>
         </div>
@@ -74,20 +72,27 @@ class Profile extends AppPage {
 
 function mapStateToProps(state) {
   return {
-    avatars: state.profile.avatars,
+    firstname: state.textInput["profile-firstname"],
+    lastname: state.textInput["profile-lastname"],
     selectedAvatar: state.profile.selectedAvatar,
+    shouldDisableSubmit: state.profile.shouldDisableSubmit,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectAvatarDispatch(selectedAvatar) {
-      profileActions.selectAvatar(dispatch, selectedAvatar);
+    loadProfileDispatch() {
+      profileActions.loadProfile(dispatch);
+    },
+    updateProfileDispatch(profile) {
+      profileActions.updateProfile(dispatch, profile);
     },
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Profile);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Profile)
+);

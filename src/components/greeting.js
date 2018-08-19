@@ -1,20 +1,15 @@
-import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import * as auth from "../services/auth";
+import React, { Component } from "react";
+
 import UserGreeting from "./user_greeting";
+import * as auth from "../services/auth";
 
 class Greeting extends Component {
-  constructor(props) {
-    super(props);
+  authenticatedUserGreeting = () => {
+    return <UserGreeting />;
+  };
 
-    this.state = { history: props.history };
-  }
-
-  render() {
-    if (auth.isAuthenticated()) {
-      return <UserGreeting />;
-    }
-
+  unauthenticatedUser = () => {
     return (
       <ul className="actions">
         <li>
@@ -22,6 +17,12 @@ class Greeting extends Component {
         </li>
       </ul>
     );
+  };
+
+  render() {
+    return auth.isAuthenticated()
+      ? this.authenticatedUserGreeting()
+      : this.unauthenticatedUser();
   }
 }
 

@@ -1,9 +1,16 @@
-require 'sinatra'
-require 'sinatra/json'
-require 'sinatra/cross_origin'
-require 'active_support/time'
-require 'byebug'
-require 'faker'
+require 'bundler'
+Bundler.require(:default, ENV.fetch('RACK_ENV', 'development'))
+
+class CoffeeMonkeyApp < Sinatra::Base
+  register Sinatra::ConfigFile
+  register Sinatra::ActiveRecordExtension
+
+  config_file 'config/config.yml'
+
+  require File.join(root, '/config/initializers/autoloader.rb')
+end
+
+use CamelToSnake
 
 configure do
   enable :cross_origin
@@ -25,12 +32,17 @@ before do
 end
 
 def valid_session?
-  current_session && Time.at(current_session[:expiresAt]) > Time.now
+  current_session && Time.at(current_session[:expires_at]) > Time.now
 end
 
 def current_session
   puts "No auth token given!" unless env['HTTP_AUTHORIZATION']
   @@sessions[env['HTTP_AUTHORIZATION']]
+end
+
+def set_current_session(new_session)
+  puts "No auth token given!" unless env['HTTP_AUTHORIZATION']
+  @@sessions[env['HTTP_AUTHORIZATION']] = new_session
 end
 
 def halt_unless_valid_session
@@ -41,5 +53,14 @@ def update_current_session
   current_session[:expiresAt] = 5.minutes.from_now.utc.to_i
 end
 
+def data
+  @data ||= JSON.parse(request.body.read) rescue nil
+end
+
+def current_user
+  User.find_by username: current_session[:username]
+end
+
 require './login'
 require './movies'
+require './profile'

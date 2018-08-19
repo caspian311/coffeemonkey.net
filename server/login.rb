@@ -7,23 +7,29 @@ require 'faker'
 @@sessions = {}
 
 post '/login' do
-  unless valid_login?
+  user = find_user
+
+  unless user
     puts '401: invalid creds'
     halt 401
   end
 
   auth_token = SecureRandom.uuid
-  payload = { authToken: auth_token,
-              firstName: Faker::Name.first_name,
-              lastName: Faker::Name.last_name,
-              expiresAt: 5.minutes.from_now.utc.to_i }
-  @@sessions[auth_token] = payload
+  payload = { auth_token: auth_token,
+              first_name: user.first_name,
+              last_name: user.last_name,
+              selected_avatar: user.selected_avatar,
+              expires_at: 5.minutes.from_now.utc.to_i }
+  @@sessions[auth_token] = { username: user.username,
+                             auth_token: auth_token,
+                             expires_at: 5.minutes.from_now.utc.to_i  }
 
   json payload
 end
 
-def valid_login?
+def find_user
   login = JSON.parse(request.body.read) rescue nil
   return false unless login
-  login['username'] == 'test' and login['password'] == 'pass'
+
+  User.find_by(username: login['username'], password: login['password'])
 end

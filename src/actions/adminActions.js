@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import * as adminApi from "../services/admin_api";
+import * as adminApi from "../services/adminApi";
 
 export function newTitleChanged(dispatch, newTitle) {
   dispatch({ type: types.NEW_TITLE_CHANGED, payload: { newTitle } });

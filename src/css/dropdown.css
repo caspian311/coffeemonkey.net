@@ -1,0 +1,21 @@
+.dd-wrapper {
+  float: right;
+  background: #F2C052; }
+  .dd-wrapper .dd-header {
+    font-size: 12pt;
+    padding: 15px 15px 0 15px; }
+    .dd-wrapper .dd-header .dd-header-title {
+      display: inline;
+      margin-right: 10px; }
+  .dd-wrapper .dd-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0; }
+  .dd-wrapper .dd-list-item {
+    padding: 10px; }
+    .dd-wrapper .dd-list-item:hover {
+      background: #fff; }
+  .dd-wrapper.open {
+    border-style: solid;
+    border-color: #423413;
+    border-width: 1px; }

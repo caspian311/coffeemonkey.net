@@ -1,9 +1,30 @@
-input {
+input[type=submit], input[type=button] {
+  float: right;
+  margin: 10px 10px 10px 0;
+  min-width: 150px;
+  font-size: 16px;
+  background: #F2C052;
+  text-transform: uppercase; }
+  input[type=submit]:disabled, input[type=button]:disabled {
+    background: #ddd;
+    color: #888;
+    border-color: #888; }
+
+button {
+  float: right;
+  margin: 10px 10px 10px 0;
+  text-transform: uppercase;
+  min-width: 150px;
+  font-size: 16px;
   border-radius: 2px;
   border: solid 1px #423413;
-  font-size: 14px;
   padding: 10px; }
-  input[type=submit], input[type=button] {
-    font-size: 16px;
-    background: #F2C052;
-    text-transform: uppercase; }
+
+select {
+  margin: 10px 10px 10px 0;
+  text-transform: uppercase;
+  min-width: 150px;
+  font-size: 16px;
+  border-radius: 2px;
+  border: solid 1px #423413;
+  padding: 10px; }

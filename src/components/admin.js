@@ -1,19 +1,13 @@
 import "../css/admin.css";
 
-import { Redirect } from "react-router-dom";
 import React from "react";
 
 import AddMovieForm from "./addMovieForm";
-import AppPage from "./appPage";
+import AdminPage from "./adminPage";
 import EditableMovieList from "./editableMovieList";
-import * as auth from "../services/auth";
 
-class Admin extends AppPage {
-  pageContents() {
-    if (!auth.isAuthenticated()) {
-      return <Redirect to={"/login"} />;
-    }
-
+class Admin extends AdminPage {
+  adminContents() {
     return (
       <div className="container admin-movie">
         <h3 className="container-title">Admin</h3>

@@ -1,14 +1,37 @@
 $bright-orange: #F2C052
 $dark-brown: #423413
+$disabled-foreground-color: #888
+$disabled-background-color: #ddd
 
 input
-  border-radius: 2px
-  border: solid 1px $dark-brown
-  font-size: 14px
-  padding: 10px
-
   &[type=submit],
   &[type=button]
+    float: right
+    margin: 10px 10px 10px 0
+    min-width: 150px
     font-size: 16px
     background: $bright-orange
     text-transform: uppercase
+    &:disabled
+      background: $disabled-background-color
+      color: $disabled-foreground-color
+      border-color: $disabled-foreground-color
+
+button
+  float: right
+  margin: 10px 10px 10px 0
+  text-transform: uppercase
+  min-width: 150px
+  font-size: 16px
+  border-radius: 2px
+  border: solid 1px $dark-brown
+  padding: 10px
+
+select
+  margin: 10px 10px 10px 0
+  text-transform: uppercase
+  min-width: 150px
+  font-size: 16px
+  border-radius: 2px
+  border: solid 1px $dark-brown
+  padding: 10px
