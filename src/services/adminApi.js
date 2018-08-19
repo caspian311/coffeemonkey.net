@@ -18,9 +18,13 @@ export function deleteMovie(movieId) {
 }
 
 export function getProfile() {
-  return axios.get(profileUrl, adminHeaders());
+  return axios.get(profileUrl, adminHeaders()).then(data => {
+    return data.data;
+  });
 }
 
 export function updateProfile(profile) {
-  return axios.put(profileUrl, profile, adminHeaders());
+  return axios.put(profileUrl, profile, adminHeaders()).then(data => {
+    return data.data;
+  });
 }

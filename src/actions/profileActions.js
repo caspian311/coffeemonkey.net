@@ -16,16 +16,12 @@ export function loadProfile(dispatch) {
   adminApi.getProfile().then(profile => {
     dispatch({
       type: types.INPUT_VALUE_CHANGED,
-      payload: { id: "profile-firstname", value: profile.data.firstName },
+      payload: { id: "profile-firstname", value: profile.firstName },
     });
     dispatch({
       type: types.INPUT_VALUE_CHANGED,
-      payload: { id: "profile-lastname", value: profile.data.lastName },
+      payload: { id: "profile-lastname", value: profile.lastName },
     });
-    dispatch({
-      type: types.INPUT_VALUE_CHANGED,
-      payload: { id: "profile-password", value: "blah blah blah" },
-    });
-    dispatch({ type: types.PROFILE_LOADED, payload: profile.data });
+    dispatch({ type: types.PROFILE_LOADED, payload: profile });
   });
 }
