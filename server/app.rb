@@ -1,11 +1,3 @@
-require 'sinatra'
-require 'sinatra/json'
-require 'sinatra/cross_origin'
-require 'active_support/time'
-require 'byebug'
-require 'faker'
-require "sinatra/activerecord"
-
 require 'bundler'
 Bundler.require(:default, ENV.fetch('RACK_ENV', 'development'))
 
