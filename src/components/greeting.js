@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import UserGreeting from "./user_greeting";
-import * as auth from "../services/auth";
 
 class Greeting extends Component {
   authenticatedUserGreeting = () => {
@@ -20,10 +20,23 @@ class Greeting extends Component {
   };
 
   render() {
-    return auth.isAuthenticated()
+    return this.props.isLoggedIn
       ? this.authenticatedUserGreeting()
       : this.unauthenticatedUser();
   }
 }
 
-export default Greeting;
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.login.isLoggedIn,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Greeting);

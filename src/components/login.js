@@ -19,8 +19,8 @@ class Login extends AppPage {
   };
 
   pageContents() {
-    if (this.props.shouldGoToAdmin) {
-      this.props.loginSuccessDispatch();
+    if (this.props.isLoggedIn) {
+      console.log("User is logged in");
       this.props.history.push("/admin");
     }
 
@@ -58,7 +58,7 @@ function mapStateToProps(state) {
     password: state.textInput["login-password"],
     showLoginErrorMessage: state.login.showLoginErrorMessage,
     errorMessage: state.login.errorMessage,
-    shouldGoToAdmin: state.login.shouldGoToAdmin,
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 
@@ -66,7 +66,6 @@ function mapDispatchToProps(dispatch) {
   return {
     loginDispatch: (username, password) =>
       loginActions.login(dispatch, username, password),
-    loginSuccessDispatch: () => loginActions.loginSuccess(dispatch),
   };
 }
 

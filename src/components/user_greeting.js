@@ -4,6 +4,7 @@ import React, { Component } from "react";
 
 import Dropdown from "./dropdown";
 import * as auth from "../services/auth";
+import * as loginActions from "../actions/loginActions";
 
 class UserGreeting extends Component {
   profile = () => {
@@ -11,8 +12,7 @@ class UserGreeting extends Component {
   };
 
   logout = () => {
-    auth.logout();
-    this.props.history.push("/login");
+    this.props.logoutDispatch();
   };
 
   render() {
@@ -31,11 +31,14 @@ function mapStateToProps(state) {
   return {
     firstName: user.firstName,
     lastName: user.lastName,
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    logoutDispatch: () => loginActions.logout(dispatch),
+  };
 }
 
 export default withRouter(

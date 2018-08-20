@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
-import * as auth from "../services/auth";
-import Greeting from "./greeting";
-
 import "../css/banner.css";
+
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import React, { Component } from "react";
+
+import Greeting from "./greeting";
 
 class Banner extends Component {
   homePath = () => {
-    if (auth.isAuthenticated()) {
+    if (this.props.isLoggedIn) {
       return "/admin";
     } else {
       return "/";
@@ -30,4 +30,17 @@ class Banner extends Component {
   }
 }
 
-export default Banner;
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.login.isLoggedIn,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Banner);

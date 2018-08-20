@@ -1,16 +1,16 @@
-import { Redirect } from "react-router-dom";
 import React from "react";
 
 import AppPage from "./appPage";
-import * as auth from "../services/auth";
+import AdminRedirector from "./adminRedirector";
 
 class AdminPage extends AppPage {
   pageContents() {
-    if (!auth.isAuthenticated()) {
-      return <Redirect to={"/login"} />;
-    }
-
-    return this.adminContents();
+    return (
+      <div>
+        <AdminRedirector />
+        {this.adminContents()}
+      </div>
+    );
   }
 
   adminContents() {}

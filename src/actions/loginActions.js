@@ -8,22 +8,23 @@ export function login(dispatch, username, password) {
     .then(user => {
       auth.setSession(user);
       dispatch({ type: types.LOGIN, payload: { user } });
+      dispatch({
+        type: types.INPUT_VALUE_CHANGED,
+        payload: { id: "login-username", value: "" },
+      });
+      dispatch({
+        type: types.INPUT_VALUE_CHANGED,
+        payload: { id: "login-password", value: "" },
+      });
     })
     .catch(e => {
       dispatch({ type: types.BAD_LOGIN, payload: { errorMessage: e.message } });
     });
 }
 
-export function loginSuccess(dispatch) {
-  dispatch({ type: types.LOGIN_SUCCESS, payload: {} });
-  dispatch({
-    type: types.INPUT_VALUE_CHANGED,
-    payload: { id: "login-username", value: "" },
-  });
-  dispatch({
-    type: types.INPUT_VALUE_CHANGED,
-    payload: { id: "login-password", value: "" },
-  });
+export function logout(dispatch) {
+  auth.logout();
+  dispatch({ type: types.LOGOUT });
 }
 
 export function badLogin(dispatch) {
