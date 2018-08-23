@@ -1,5 +1,3 @@
-import "../css/profileAvatarSelector.css";
-
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
