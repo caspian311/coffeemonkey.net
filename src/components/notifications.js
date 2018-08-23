@@ -6,14 +6,6 @@ import React, { Component } from "react";
 import * as notificationActions from "../actions/notificationActions";
 
 class Notifications extends Component {
-  homePath = () => {
-    if (this.props.isLoggedIn) {
-      return "/admin";
-    } else {
-      return "/";
-    }
-  };
-
   closeNotification = e => {
     e.preventDefault();
     e.stopPropagation();
