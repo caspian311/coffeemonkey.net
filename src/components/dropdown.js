@@ -11,7 +11,6 @@ class Dropdown extends Component {
     super(props);
     this.state = {
       listOpen: false,
-      headerTitle: this.props.title,
     };
   }
 
@@ -31,15 +30,15 @@ class Dropdown extends Component {
   }
 
   render() {
-    const { list } = this.props;
-    const { listOpen, headerTitle } = this.state;
+    const { list, title } = this.props;
+    const { listOpen } = this.state;
     const wrapperClassName = listOpen ? "dd-wrapper open" : "dd-wrapper";
     const ddIcon = listOpen ? faAngleUp : faAngleDown;
 
     return (
       <div className={wrapperClassName}>
         <div className="dd-header" onClick={() => this.toggleList()}>
-          <div className="dd-header-title">{headerTitle}</div>
+          <div className="dd-header-title">{title}</div>
           <FontAwesomeIcon icon={ddIcon} />
         </div>
         {listOpen && (

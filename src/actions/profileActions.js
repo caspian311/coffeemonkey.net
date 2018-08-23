@@ -7,8 +7,8 @@ export function selectAvatar(dispatch, selectedAvatar) {
 
 export function updateProfile(dispatch, profile) {
   dispatch({ type: types.FORM_SAVING });
-  adminApi.updateProfile(profile).then(() => {
-    dispatch({ type: types.PROFILE_SAVED });
+  adminApi.updateProfile(profile).then(user => {
+    dispatch({ type: types.PROFILE_SAVED, payload: { user } });
   });
 }
 

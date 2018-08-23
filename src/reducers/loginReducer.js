@@ -1,13 +1,24 @@
-import { LOGIN, BAD_LOGIN, LOGOUT } from "../actions/actionTypes";
+import {
+  LOGIN,
+  BAD_LOGIN,
+  LOGOUT,
+  PROFILE_SAVED,
+} from "../actions/actionTypes";
 import initialState from "./initialLoginState";
 
 export default function login(state = initialState, action) {
   switch (action.type) {
+    case PROFILE_SAVED:
+      return {
+        ...state,
+        user: action.payload.user,
+      };
     case LOGIN:
       return {
         ...state,
         showLoginErrorMessage: false,
         isLoggedIn: true,
+        user: action.payload.user,
       };
     case LOGOUT:
       return {
