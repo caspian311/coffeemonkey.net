@@ -17,13 +17,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AdminRedirector)
-);
+export default withRouter(connect(mapStateToProps)(AdminRedirector));

@@ -27,3 +27,12 @@ export function logout(dispatch) {
   auth.logout();
   dispatch({ type: types.LOGOUT });
 }
+
+export function populateUserToState(dispatch) {
+  if (auth.isAuthenticated()) {
+    dispatch({
+      type: types.LOGIN,
+      payload: { user: auth.getUser() },
+    });
+  }
+}
