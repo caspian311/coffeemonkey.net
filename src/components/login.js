@@ -19,7 +19,6 @@ class Login extends AppPage {
 
   pageContents() {
     if (this.props.isLoggedIn) {
-      console.log("User is logged in");
       this.props.history.push("/admin");
     }
 
@@ -51,8 +50,6 @@ function mapStateToProps(state) {
   return {
     username: state.textInput["login-username"],
     password: state.textInput["login-password"],
-    showLoginErrorMessage: state.login.showLoginErrorMessage,
-    errorMessage: state.login.errorMessage,
     isLoggedIn: state.login.isLoggedIn,
   };
 }

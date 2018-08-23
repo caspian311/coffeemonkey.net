@@ -5,12 +5,9 @@ import React, { Component } from "react";
 class AdminRedirector extends Component {
   render() {
     if (!this.props.isLoggedIn) {
-      console.log("user is no longer logged in");
       this.props.history.push("/login");
-    } else {
-      console.log("user is still logged in");
     }
-    return <div />;
+    return <span />;
   }
 }
 
