@@ -4,6 +4,7 @@ import admin from "./adminReducer";
 import movie from "./movieReducer";
 import profile from "./profileReducer";
 import textInput from "./textInputReducer";
+import notifications from "./notificationsReducer";
 
 const rootReducer = combineReducers({
   login,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   movie,
   profile,
   textInput,
+  notifications,
 });
 
 export default rootReducer;

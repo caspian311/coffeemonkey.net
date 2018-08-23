@@ -18,7 +18,11 @@ export function login(dispatch, username, password) {
       });
     })
     .catch(e => {
-      dispatch({ type: types.BAD_LOGIN, payload: { errorMessage: e.message } });
+      // dispatch({ type: types.BAD_LOGIN, payload: { errorMessage: e.message } });
+      dispatch({
+        type: types.SHOW_NOTIFICATION,
+        payload: { message: e.message, type: "error" },
+      });
     });
 }
 

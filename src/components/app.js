@@ -9,6 +9,7 @@ import Banner from "./banner";
 import Login from "./login";
 import Main from "./main";
 import Profile from "./profile";
+import Notifications from "./Notifications";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
       <Router>
         <div className="foo">
           <Route component={Banner} />
+          <Route component={Notifications} />
           <Route
             exact={true}
             path="/"

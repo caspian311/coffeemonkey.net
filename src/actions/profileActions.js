@@ -9,6 +9,10 @@ export function updateProfile(dispatch, profile) {
   dispatch({ type: types.FORM_SAVING });
   adminApi.updateProfile(profile).then(user => {
     dispatch({ type: types.PROFILE_SAVED, payload: { user } });
+    dispatch({
+      type: types.SHOW_NOTIFICATION,
+      payload: { message: "Profile successfully updated.", type: "success" },
+    });
   });
 }
 

@@ -6,7 +6,6 @@ import { withRouter } from "react-router-dom";
 import React from "react";
 
 import AppPage from "./appPage";
-import LoginErrorMessage from "./loginErrorMessage";
 import TextInput from "./textInput";
 import * as loginActions from "../actions/loginActions";
 
@@ -28,10 +27,6 @@ class Login extends AppPage {
       <div className="container login">
         <h3 className="container-title">Login</h3>
         <div className="content">
-          <LoginErrorMessage
-            shouldShow={this.props.showLoginErrorMessage}
-            message={this.props.errorMessage}
-          />
           <form onSubmit={this.handleSubmit}>
             <TextInput
               placeholder="Username"

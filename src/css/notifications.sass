@@ -1,0 +1,44 @@
+.notifications
+  position: absolute
+  width: 100%
+
+  h1
+    position: relative
+    text-align: center
+    color: white
+    font-weight: normal
+    font-size: 20pt
+    height: 50px
+    z-index: 90
+    margin-top: -60px
+
+    &.shown
+      animation-name: example
+      animation-duration: 1s
+      margin-top: -15px
+    span
+      color: white
+      font-size: 10pt
+      vertical-align: middle
+      margin: 20px
+      border: 2px solid white
+      border-radius: 50%
+      width: 15px
+      display: inline-block
+
+  &.error
+    h1
+      background: red
+
+  &.success
+    h1
+      background: green
+
+
+
+
+@keyframes example
+    0%
+      margin-top: -60px
+    100%
+      margin-top: -15px
