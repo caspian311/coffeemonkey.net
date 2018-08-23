@@ -1,4 +1,4 @@
 export default {
-  showMessage: false,
+  showMessage: undefined,
   message: "",
 };

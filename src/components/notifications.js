@@ -17,7 +17,15 @@ class Notifications extends Component {
     const notificationClasses = `notifications ${this.props.type}`;
     return (
       <div className={notificationClasses}>
-        <h1 className={this.props.showMessage ? "shown" : ""}>
+        <h1
+          className={
+            this.props.showMessage === undefined
+              ? ""
+              : this.props.showMessage
+                ? "shown"
+                : "hidden"
+          }
+        >
           {this.props.message}
           <span className="clickable" onClick={this.closeNotification}>
             X

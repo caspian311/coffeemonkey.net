@@ -9,7 +9,7 @@ import Banner from "./banner";
 import Login from "./login";
 import Main from "./main";
 import Profile from "./profile";
-import Notifications from "./Notifications";
+import Notifications from "./notifications";
 
 class App extends Component {
   render() {

@@ -25,13 +25,6 @@ export default function login(state = initialState, action) {
         ...state,
         isLoggedIn: false,
       };
-    case BAD_LOGIN:
-      return {
-        ...state,
-        isLoggedIn: false,
-        showLoginErrorMessage: true,
-        errorMessage: action.payload.errorMessage,
-      };
     default:
       return state;
   }

@@ -14,7 +14,6 @@ export default function notifications(state = initialState, action) {
       return {
         ...state,
         showMessage: false,
-        message: "",
       };
     default:
       return state;

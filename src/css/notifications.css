@@ -11,9 +11,13 @@
     z-index: 90;
     margin-top: -60px; }
     .notifications h1.shown {
-      animation-name: example;
+      animation-name: showingNotification;
       animation-duration: 1s;
       margin-top: -15px; }
+    .notifications h1.hidden {
+      animation-name: hidingNotification;
+      animation-duration: 1s;
+      margin-top: -60px; }
     .notifications h1 span {
       color: white;
       font-size: 10pt;
@@ -28,7 +32,13 @@
   .notifications.success h1 {
     background: green; }
 
-@keyframes example {
+@keyframes hidingNotification {
+  0% {
+    margin-top: -15px; }
+  100% {
+    margin-top: -60px; } }
+
+@keyframes showingNotification {
   0% {
     margin-top: -60px; }
   100% {

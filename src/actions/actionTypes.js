@@ -1,6 +1,5 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const BAD_LOGIN = "BAD_LOGIN";
 export const USERNAME_CHANGED = "USERNAME_CHANGED";
 export const PASSWORD_CHANGED = "PASSWORD_CHANGED";
 export const MOVIES_LOADED = "MOVIES_LOADED";

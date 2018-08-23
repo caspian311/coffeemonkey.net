@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 import * as loginService from "../services/login_service";
 import * as auth from "../services/auth";
+import * as notificationActions from "./notificationActions";
 
 export function login(dispatch, username, password) {
   loginService
@@ -18,19 +19,11 @@ export function login(dispatch, username, password) {
       });
     })
     .catch(e => {
-      // dispatch({ type: types.BAD_LOGIN, payload: { errorMessage: e.message } });
-      dispatch({
-        type: types.SHOW_NOTIFICATION,
-        payload: { message: e.message, type: "error" },
-      });
+      notificationActions.showErrorMessage(dispatch, e.message);
     });
 }
 
 export function logout(dispatch) {
   auth.logout();
   dispatch({ type: types.LOGOUT });
-}
-
-export function badLogin(dispatch) {
-  dispatch({ type: types.BAD_LOGIN });
 }

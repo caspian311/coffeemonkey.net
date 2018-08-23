@@ -13,9 +13,16 @@
     margin-top: -60px
 
     &.shown
-      animation-name: example
+      animation-name: showingNotification
       animation-duration: 1s
       margin-top: -15px
+
+    &.hidden
+      animation-name: hidingNotification
+      animation-duration: 1s
+      margin-top: -60px
+
+
     span
       color: white
       font-size: 10pt
@@ -34,10 +41,13 @@
     h1
       background: green
 
+@keyframes hidingNotification
+    0%
+      margin-top: -15px
+    100%
+      margin-top: -60px
 
-
-
-@keyframes example
+@keyframes showingNotification
     0%
       margin-top: -60px
     100%
