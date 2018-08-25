@@ -10,13 +10,14 @@ export function getMovies() {
 }
 
 export function login(username, password) {
-  const loginData = {
-    username: username,
-    password: password,
-  };
+  const loginData = { username, password };
   return axios.post(baseUrl + "/login", loginData);
 }
 
 export function register(payload) {
   return axios.post(baseUrl + "/register", payload);
+}
+
+export function checkAvailabilityOfUsername(username) {
+  return axios.post(baseUrl + "/usernameCheck", { username });
 }

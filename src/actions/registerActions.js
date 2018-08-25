@@ -11,7 +11,7 @@ export function register(dispatch, firstName, lastName, username, password) {
         "register-lastName",
         "register-username",
         "register-password",
-      ].map(id => {
+      ].forEach(id => {
         dispatch({
           type: types.INPUT_VALUE_CHANGED,
           payload: { id: id, value: "" },
@@ -21,5 +21,20 @@ export function register(dispatch, firstName, lastName, username, password) {
     })
     .catch(e => {
       notificationActions.showErrorMessage(dispatch, e.message);
+    });
+}
+
+export function checkAvailabilityOfUsername(dispatch, username) {
+  registerService
+    .checkAvailabilityOfUsername(username)
+    .then(() => {
+      dispatch({
+        type: types.USERNAME_AVAILABLE,
+      });
+    })
+    .catch(e => {
+      dispatch({
+        type: types.USERNAME_UNAVAILABLE,
+      });
     });
 }

@@ -7,3 +7,7 @@ export function register(payload) {
     };
   });
 }
+
+export function checkAvailabilityOfUsername(username) {
+  return api.checkAvailabilityOfUsername(username);
+}

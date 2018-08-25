@@ -53,6 +53,7 @@ class Register extends AppPage {
               placeholder="Username"
               id="register-username"
               value={this.props.username}
+              onChangeListener={this.checkUsername}
             />
             <TextInput
               placeholder="Password"
@@ -60,13 +61,21 @@ class Register extends AppPage {
               value={this.props.password}
               password="true"
             />
-            <input type="submit" value="Register" />
+            <input
+              type="submit"
+              value="Register"
+              disabled={this.props.canRegister === false}
+            />
             <button onClick={this.cancelRegistration}>Cancel</button>
           </form>
         </div>
       </div>
     );
   }
+
+  checkUsername = e => {
+    this.props.checkUsername(this.props.username);
+  };
 }
 
 function mapStateToProps(state) {
@@ -75,6 +84,7 @@ function mapStateToProps(state) {
     lastName: state.textInput["register-lastName"],
     username: state.textInput["register-username"],
     password: state.textInput["register-password"],
+    canRegister: state.register.canRegister,
   };
 }
 
@@ -88,6 +98,9 @@ function mapDispatchToProps(dispatch) {
         username,
         password
       );
+    },
+    checkUsername(username) {
+      registerActions.checkAvailabilityOfUsername(dispatch, username);
     },
   };
 }
