@@ -25,7 +25,7 @@ class EditableMovieList extends Component {
             return (
               <li key={index} className={this.classNameFromIndex(index)}>
                 <span>
-                  {movie.title} ({movie.release_date})
+                  {movie.title} ({movie.releaseDate})
                 </span>
                 <a href="#blah" onClick={() => this.deleteMovie(movie.id)}>
                   X
