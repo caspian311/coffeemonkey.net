@@ -19,6 +19,8 @@ class TextInput extends Component {
         placeholder={this.props.withLabel ? undefined : this.props.placeholder}
         onChange={e => {
           this.valueChanged(e);
+        }}
+        onKeyUp={e => {
           onChangeListener && onChangeListener(e);
         }}
       />
@@ -34,6 +36,8 @@ class TextInput extends Component {
         placeholder={this.props.withLabel ? undefined : this.props.placeholder}
         onChange={e => {
           this.valueChanged(e);
+        }}
+        onKeyUp={e => {
           onChangeListener && onChangeListener(e);
         }}
       />
