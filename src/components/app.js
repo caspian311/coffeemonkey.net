@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import Admin from "./admin";
 import Banner from "./banner";
 import Login from "./login";
+import Register from "./register";
 import Main from "./main";
 import Profile from "./profile";
 import Notifications from "./notifications";
@@ -27,6 +28,11 @@ class App extends Component {
             exact={true}
             path="/login"
             render={props => <Login needsFooter={false} />}
+          />
+          <Route
+            exact={true}
+            path="/register"
+            render={props => <Register needsFooter={false} />}
           />
           <Route
             exact={true}

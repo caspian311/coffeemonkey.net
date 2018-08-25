@@ -16,3 +16,7 @@ export function login(username, password) {
   };
   return axios.post(baseUrl + "/login", loginData);
 }
+
+export function register(payload) {
+  return axios.post(baseUrl + "/register", payload);
+}
