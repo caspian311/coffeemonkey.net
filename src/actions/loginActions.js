@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import * as loginService from "../services/login_service";
+import * as loginService from "../services/loginService";
 import * as auth from "../services/auth";
 import * as notificationActions from "./notificationActions";
 
