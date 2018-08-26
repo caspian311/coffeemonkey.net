@@ -10,6 +10,10 @@ import TextInput from "./textInput";
 import * as registerActions from "../actions/registerActions";
 
 class Register extends AppPage {
+  componentDidMount() {
+    this.props.clearRegisterForm();
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -29,6 +33,20 @@ class Register extends AppPage {
     this.props.history.goBack();
   };
 
+  evaluateForm = () => {
+    this.props.evaluateForm(
+      this.props.firstName,
+      this.props.lastName,
+      this.props.username,
+      this.props.password,
+      this.props.showUsernameError
+    );
+  };
+
+  checkUsername = e => {
+    this.props.checkUsername(this.props.username);
+  };
+
   pageContents() {
     if (this.props.isLoggedIn) {
       this.props.history.push("/profile");
@@ -43,23 +61,29 @@ class Register extends AppPage {
               placeholder="First name"
               id="register-firstName"
               value={this.props.firstName}
+              onChangeListener={this.evaluateForm}
             />
             <TextInput
               placeholder="Last name"
               id="register-lastName"
               value={this.props.lastName}
+              onChangeListener={this.evaluateForm}
             />
             <TextInput
               placeholder="Username"
               id="register-username"
               value={this.props.username}
               onChangeListener={this.checkUsername}
+              errorMessage={
+                this.props.showUsernameError && "Username is unavailable"
+              }
             />
             <TextInput
               placeholder="Password"
               id="register-password"
               value={this.props.password}
               password="true"
+              onChangeListener={this.evaluateForm}
             />
             <input
               type="submit"
@@ -72,10 +96,6 @@ class Register extends AppPage {
       </div>
     );
   }
-
-  checkUsername = e => {
-    this.props.checkUsername(this.props.username);
-  };
 }
 
 function mapStateToProps(state) {
@@ -85,6 +105,7 @@ function mapStateToProps(state) {
     username: state.textInput["register-username"],
     password: state.textInput["register-password"],
     canRegister: state.register.canRegister,
+    showUsernameError: state.register.showUsernameError,
   };
 }
 
@@ -101,6 +122,25 @@ function mapDispatchToProps(dispatch) {
     },
     checkUsername(username) {
       registerActions.checkAvailabilityOfUsername(dispatch, username);
+    },
+    evaluateForm(
+      firstName,
+      lastName,
+      username,
+      password,
+      showingUsernameError
+    ) {
+      registerActions.evaluateForm(
+        dispatch,
+        firstName,
+        lastName,
+        username,
+        password,
+        showingUsernameError
+      );
+    },
+    clearRegisterForm() {
+      registerActions.clearRegisterForm(dispatch);
     },
   };
 }

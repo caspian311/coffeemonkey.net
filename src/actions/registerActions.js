@@ -6,21 +6,25 @@ export function register(dispatch, firstName, lastName, username, password) {
   registerService
     .register({ firstName, lastName, username, password })
     .then(user => {
-      [
-        "register-firstName",
-        "register-lastName",
-        "register-username",
-        "register-password",
-      ].forEach(id => {
-        dispatch({
-          type: types.INPUT_VALUE_CHANGED,
-          payload: { id: id, value: "" },
-        });
-      });
+      clearRegisterForm(dispatch);
     })
     .catch(e => {
       notificationActions.showErrorMessage(dispatch, e.message);
     });
+}
+
+export function clearRegisterForm(dispatch) {
+  [
+    "register-firstName",
+    "register-lastName",
+    "register-username",
+    "register-password",
+  ].forEach(id => {
+    dispatch({
+      type: types.INPUT_VALUE_CHANGED,
+      payload: { id: id, value: "" },
+    });
+  });
 }
 
 export function checkAvailabilityOfUsername(dispatch, username) {
@@ -36,4 +40,19 @@ export function checkAvailabilityOfUsername(dispatch, username) {
         type: types.USERNAME_UNAVAILABLE,
       });
     });
+}
+
+export function evaluateForm(
+  dispatch,
+  firstName,
+  lastName,
+  username,
+  password,
+  showingUsernameError
+) {
+  if (firstName && lastName && username && password) {
+    dispatch({ type: types.REGISTER_FORM_VALID });
+  } else {
+    dispatch({ type: types.REGISTER_FORM_INVALID });
+  }
 }
