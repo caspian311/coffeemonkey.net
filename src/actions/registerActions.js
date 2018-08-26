@@ -16,7 +16,6 @@ export function register(dispatch, firstName, lastName, username, password) {
           type: types.INPUT_VALUE_CHANGED,
           payload: { id: id, value: "" },
         });
-        return null;
       });
     })
     .catch(e => {
