@@ -10,3 +10,10 @@ input {
   border: solid 1px #423413;
   font-size: 14px;
   padding: 10px; }
+
+.input-field {
+  height: 65px; }
+  .input-field .input-field-error-message {
+    color: red;
+    text-align: center;
+    margin-top: -18px; }

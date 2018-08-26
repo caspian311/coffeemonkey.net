@@ -44,16 +44,23 @@ class TextInput extends Component {
     );
   };
 
+  errorMessage = () => {
+    return (
+      <div className="input-field-error-message">{this.props.errorMessage}</div>
+    );
+  };
+
   render() {
     const { onChangeListener } = this.props;
     return (
-      <div>
+      <div className="input-field">
         {this.props.withLabel && (
           <label htmlFor={this.props.id}>{this.props.placeholder}</label>
         )}
         {this.props.password
           ? this.passwordInput(onChangeListener)
           : this.textInput(onChangeListener)}
+        {this.props.errorMessage && this.errorMessage()}
       </div>
     );
   }
