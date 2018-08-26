@@ -3,10 +3,12 @@ import * as registerService from "../services/registerService";
 import * as notificationActions from "./notificationActions";
 
 export function register(dispatch, firstName, lastName, username, password) {
+  dispatch({ type: types.REGISTER_FORM_INVALID });
   registerService
     .register({ firstName, lastName, username, password })
     .then(user => {
       clearRegisterForm(dispatch);
+      dispatch({ type: types.REGISTRATION_SUCCESSFUL });
     })
     .catch(e => {
       notificationActions.showErrorMessage(dispatch, e.message);
@@ -55,4 +57,8 @@ export function evaluateForm(
   } else {
     dispatch({ type: types.REGISTER_FORM_INVALID });
   }
+}
+
+export function done(dispatch) {
+  dispatch({ type: types.REGISTRATION_DONE });
 }

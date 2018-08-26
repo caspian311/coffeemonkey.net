@@ -50,6 +50,9 @@ class Register extends AppPage {
   pageContents() {
     if (this.props.isLoggedIn) {
       this.props.history.push("/profile");
+    } else if (this.props.shouldRedirectToLogin) {
+      this.props.registrationDone();
+      this.props.history.push("/login");
     }
 
     return (
@@ -106,6 +109,7 @@ function mapStateToProps(state) {
     password: state.textInput["register-password"],
     canRegister: state.register.canRegister,
     showUsernameError: state.register.showUsernameError,
+    shouldRedirectToLogin: state.register.shouldRedirectToLogin,
   };
 }
 
@@ -141,6 +145,9 @@ function mapDispatchToProps(dispatch) {
     },
     clearRegisterForm() {
       registerActions.clearRegisterForm(dispatch);
+    },
+    registrationDone() {
+      registerActions.done(dispatch);
     },
   };
 }

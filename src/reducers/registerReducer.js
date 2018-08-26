@@ -3,6 +3,8 @@ import {
   USERNAME_AVAILABLE,
   REGISTER_FORM_INVALID,
   REGISTER_FORM_VALID,
+  REGISTRATION_SUCCESSFUL,
+  REGISTRATION_DONE,
 } from "../actions/actionTypes";
 import initialState from "./initialRegisterState";
 
@@ -28,6 +30,16 @@ export default function register(state = initialState, action) {
       return {
         ...state,
         canRegister: true,
+      };
+    case REGISTRATION_SUCCESSFUL:
+      return {
+        ...state,
+        shouldRedirectToLogin: true,
+      };
+    case REGISTRATION_DONE:
+      return {
+        ...state,
+        shouldRedirectToLogin: false,
       };
     default:
       return state;
