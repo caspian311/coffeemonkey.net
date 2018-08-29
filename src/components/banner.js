@@ -28,7 +28,7 @@ class Banner extends Component {
           </div>
           <Greeting />
         </div>
-        {/* <SecondaryNavigation /> */}
+        <SecondaryNavigation />
       </div>
     );
   }

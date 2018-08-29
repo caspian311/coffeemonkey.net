@@ -5,11 +5,18 @@ import React, { Component } from "react";
 
 class SecondaryNavigation extends Component {
   render() {
+    if (!this.props.isLoggedIn) {
+      return <div />;
+    }
     return (
       <div className="secondary-navigation">
         <ul>
-          <a>Foo</a>
-          <a>Bar</a>
+          <li>
+            <a>Foo</a>
+          </li>
+          <li>
+            <a>Bar</a>
+          </li>
         </ul>
       </div>
     );
@@ -17,7 +24,9 @@ class SecondaryNavigation extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    isLoggedIn: state.login.isLoggedIn,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

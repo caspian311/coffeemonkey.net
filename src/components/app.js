@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="foo">
+        <div>
           <Route component={Banner} />
           <Route component={Notifications} />
           <Route

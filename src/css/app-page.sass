@@ -1,15 +1,5 @@
 @import './common.sass'
 
-$banner-height: 60px
-@media (max-width: $break-medium)
-  $banner-height: 80px
-@media (max-width: $break-large)
-  $banner-height: 80px
-
-$footer-height: 50px
-
-$footer-offset: calc($banner-height + $footer-height)
-
 .main
   min-height: calc(100vh - #{$banner-height} - #{$footer-height} - 10px)
 
