@@ -7,10 +7,9 @@ import React, { Component } from "react";
 import Admin from "./admin";
 import Banner from "./banner";
 import Login from "./login";
-import Register from "./register";
-import Main from "./main";
-import Profile from "./profile";
 import Notifications from "./notifications";
+import Profile from "./profile";
+import Register from "./register";
 
 class App extends Component {
   render() {
@@ -22,7 +21,7 @@ class App extends Component {
           <Route
             exact={true}
             path="/"
-            render={props => <Main needsFooter={false} />}
+            render={props => <Admin needsFooter={false} />}
           />
           <Route
             exact={true}

@@ -1,23 +1,58 @@
 import "../css/admin.css";
 
+import { connect } from "react-redux";
 import React from "react";
 
 import AddMovieForm from "./addMovieForm";
 import AdminPage from "./adminPage";
 import EditableMovieList from "./editableMovieList";
+import MovieList from "./movieList";
 
 class Admin extends AdminPage {
+  adminView = () => {
+    return (
+      <div className="content">
+        <AddMovieForm />
+        <EditableMovieList />
+      </div>
+    );
+  };
+
+  nonAdminView = () => {
+    return (
+      <div className="content">
+        <MovieList />
+      </div>
+    );
+  };
+
+  containerClasses = () => {
+    return `container ${this.props.isLoggedIn ? "admin-movie" : ""}`;
+  };
+
   adminContents() {
     return (
-      <div className="container admin-movie">
+      <div className={this.containerClasses()}>
         <h3 className="container-title">Admin</h3>
         <div className="content">
-          <AddMovieForm />
-          <EditableMovieList />
+          {this.props.isLoggedIn ? this.adminView() : this.nonAdminView()}
         </div>
       </div>
     );
   }
 }
 
-export default Admin;
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.login.isLoggedIn,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Admin);
