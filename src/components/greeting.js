@@ -25,9 +25,13 @@ class Greeting extends Component {
   };
 
   render() {
-    return this.props.isLoggedIn
-      ? this.authenticatedUserGreeting()
-      : this.unauthenticatedUser();
+    return (
+      <div className="greeting">
+        {this.props.isLoggedIn
+          ? this.authenticatedUserGreeting()
+          : this.unauthenticatedUser()}
+      </div>
+    );
   }
 }
 
