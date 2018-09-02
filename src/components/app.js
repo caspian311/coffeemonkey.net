@@ -7,22 +7,23 @@ import React, { Component } from "react";
 import Admin from "./admin";
 import Banner from "./banner";
 import Login from "./login";
-import Register from "./register";
-import Main from "./main";
-import Profile from "./profile";
 import Notifications from "./notifications";
+import Profile from "./profile";
+import Register from "./register";
+import SecondaryNavigation from "./secondaryNavigation";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="foo">
+        <div>
           <Route component={Banner} />
+          <Route component={SecondaryNavigation} />
           <Route component={Notifications} />
           <Route
             exact={true}
             path="/"
-            render={props => <Main needsFooter={false} />}
+            render={props => <Admin needsFooter={false} />}
           />
           <Route
             exact={true}

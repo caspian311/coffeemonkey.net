@@ -1,23 +1,9 @@
-@import './colors.sass'
-
-$break-small: 320px
-$break-medium: 768px
-$break-large: 1200px
-
-$banner-height: 60px
-@media (max-width: $break-medium)
-  $banner-height: 80px
-@media (max-width: $break-large)
-  $banner-height: 80px
-
-$footer-height: 50px
-
-$footer-offset: calc($banner-height + $footer-height)
+@import './common.sass'
 
 .main
   min-height: calc(100vh - #{$banner-height} - #{$footer-height} - 10px)
 
-  margin: auto
+  margin: 20px auto 0 auto
   max-width: 500px
   @media (max-width: $break-medium)
     max-width: 100%

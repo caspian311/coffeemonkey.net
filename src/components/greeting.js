@@ -1,8 +1,10 @@
+import "../css/greeting.css";
+
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
-import UserGreeting from "./user_greeting";
+import UserGreeting from "./userGreeting";
 
 class Greeting extends Component {
   authenticatedUserGreeting = () => {
@@ -23,9 +25,13 @@ class Greeting extends Component {
   };
 
   render() {
-    return this.props.isLoggedIn
-      ? this.authenticatedUserGreeting()
-      : this.unauthenticatedUser();
+    return (
+      <div className="greeting">
+        {this.props.isLoggedIn
+          ? this.authenticatedUserGreeting()
+          : this.unauthenticatedUser()}
+      </div>
+    );
   }
 }
 

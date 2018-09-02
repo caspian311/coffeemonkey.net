@@ -1,3 +1,5 @@
+import "../css/app-page.css";
+
 import React, { Component } from "react";
 
 import Footer from "./footer";

@@ -1,20 +1,9 @@
-@import './colors.sass'
-
-$break-small: 320px
-$break-large: 1200px
-$break-medium: 768px
-
-$banner-height: 60px
-@media (max-width: $break-medium)
-  $banner-height: 80px
-@media (max-width: $break-large)
-  $banner-height: 80px
+@import './common.sass'
 
 .banner
   position: relative
   background: $bright-orange
   border-bottom: 1px solid $dark-brown
-  margin-bottom: 10px
   @media (max-width: $break-medium)
     margin-bottom: 0
   height: $banner-height
