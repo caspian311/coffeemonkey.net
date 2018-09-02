@@ -10,6 +10,7 @@ import Login from "./login";
 import Notifications from "./notifications";
 import Profile from "./profile";
 import Register from "./register";
+import SecondaryNavigation from "./secondaryNavigation";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
       <Router>
         <div>
           <Route component={Banner} />
+          <Route component={SecondaryNavigation} />
           <Route component={Notifications} />
           <Route
             exact={true}

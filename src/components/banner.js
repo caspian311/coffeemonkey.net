@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import Greeting from "./greeting";
-import SecondaryNavigation from "./secondaryNavigation";
 
 class Banner extends Component {
   homePath = () => {
@@ -18,17 +17,14 @@ class Banner extends Component {
 
   render() {
     return (
-      <div>
-        <div className="banner">
-          <div className="logo">
-            <Link to={this.homePath()}>
-              <img src="images/coffee_logo.png" alt="Logo" />
-              <h1 className="title">Coffee Monkey!</h1>
-            </Link>
-          </div>
-          <Greeting />
+      <div className="banner">
+        <div className="logo">
+          <Link to={this.homePath()}>
+            <img src="images/coffee_logo.png" alt="Logo" />
+            <h1 className="title">Coffee Monkey!</h1>
+          </Link>
         </div>
-        <SecondaryNavigation />
+        <Greeting />
       </div>
     );
   }
