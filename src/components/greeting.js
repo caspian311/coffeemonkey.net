@@ -1,8 +1,10 @@
+import "../css/greeting.css";
+
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
-import UserGreeting from "./user_greeting";
+import UserGreeting from "./userGreeting";
 
 class Greeting extends Component {
   authenticatedUserGreeting = () => {
