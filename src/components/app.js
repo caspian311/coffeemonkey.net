@@ -11,6 +11,7 @@ import Notifications from "./notifications";
 import Profile from "./profile";
 import Register from "./register";
 import SecondaryNavigation from "./secondaryNavigation";
+import ChatRooms from "./chatRooms";
 
 class App extends Component {
   render() {
@@ -44,6 +45,11 @@ class App extends Component {
             exact={true}
             path="/profile"
             render={props => <Profile needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/chatRooms"
+            render={props => <ChatRooms needsFooter={true} />}
           />
         </div>
       </Router>

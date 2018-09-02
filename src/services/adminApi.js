@@ -4,6 +4,7 @@ let axios = require("axios");
 const baseUrl = "http://localhost:4567";
 const moviesUrl = `${baseUrl}/movies`;
 const profileUrl = `${baseUrl}/profile`;
+const chatRoomsUrl = `${baseUrl}/chatRooms`;
 
 export function adminHeaders() {
   return { headers: { Authorization: auth.getToken() } };
@@ -25,6 +26,12 @@ export function getProfile() {
 
 export function updateProfile(profile) {
   return axios.put(profileUrl, profile, adminHeaders()).then(data => {
+    return data.data;
+  });
+}
+
+export function loadChatRooms() {
+  return axios.get(chatRoomsUrl, adminHeaders()).then(data => {
     return data.data;
   });
 }
