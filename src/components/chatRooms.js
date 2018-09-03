@@ -1,5 +1,6 @@
 import "../css/chat-rooms.css";
 
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import React from "react";
 
@@ -15,11 +16,19 @@ class ChatRooms extends AdminPage {
     return <div>Loading...</div>;
   };
 
+  linkToRoom = id => {
+    return `/chatRooms/${id}`;
+  };
+
   chatRoomsListings = () => {
     return (
       <ul>
         {this.props.chatRooms.map(room => {
-          return <li>{room.name}</li>;
+          return (
+            <li key={room.id}>
+              <Link to={this.linkToRoom(room.id)}>{room.name}</Link>
+            </li>
+          );
         })}
       </ul>
     );

@@ -6,7 +6,8 @@ import movie from "./movieReducer";
 import profile from "./profileReducer";
 import textInput from "./textInputReducer";
 import notifications from "./notificationsReducer";
-import chatRooms from "./chatRooms";
+import chatRooms from "./chatRoomsReducer";
+import chatRoom from "./chatRoomReducer";
 
 const rootReducer = combineReducers({
   login,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   textInput,
   notifications,
   chatRooms,
+  chatRoom,
 });
 
 export default rootReducer;

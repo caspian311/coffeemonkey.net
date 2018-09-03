@@ -35,3 +35,11 @@ export function loadChatRooms() {
     return data.data;
   });
 }
+
+export function loadChatRoom(chatRoomId) {
+  return axios
+    .get(`${chatRoomsUrl}/${chatRoomId}`, adminHeaders())
+    .then(data => {
+      return data.data;
+    });
+}

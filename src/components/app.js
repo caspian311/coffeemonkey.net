@@ -12,6 +12,7 @@ import Profile from "./profile";
 import Register from "./register";
 import SecondaryNavigation from "./secondaryNavigation";
 import ChatRooms from "./chatRooms";
+import ChatRoom from "./chatRoom";
 
 class App extends Component {
   render() {
@@ -50,6 +51,16 @@ class App extends Component {
             exact={true}
             path="/chatRooms"
             render={props => <ChatRooms needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/chatRooms/:chatRoomId"
+            render={props => (
+              <ChatRoom
+                needsFooter={true}
+                chatRoomId={props.match.params.chatRoomId}
+              />
+            )}
           />
         </div>
       </Router>
