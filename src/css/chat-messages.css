@@ -1,0 +1,5 @@
+.chat-messages {
+  padding: 10px;
+  border: solid 1px #CCC;
+  height: 200px;
+  overflow-y: scroll; }

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import React from "react";
 
 import AdminPage from "./adminPage";
+import ChatMessages from "./chatMessages";
+import NewMessageForm from "./newMessageForm";
 import * as chatRoomActions from "../actions/chatRoomActions";
 
 class ChatRoom extends AdminPage {
@@ -19,17 +21,8 @@ class ChatRoom extends AdminPage {
     return (
       <div>
         <h3>{this.props.chatRoom.name}</h3>
-        {this.props.chatRoom.chatMessages.map(message => {
-          return (
-            <div className="message" key={message.id}>
-              <span className="message-body">{message.message}</span>
-              <span className="message-author">
-                by {message.user.firstName} {message.user.lastName}
-                &nbsp;on {message.createdAt}
-              </span>
-            </div>
-          );
-        })}
+        <ChatMessages chatMessages={this.props.chatRoom.chatMessages} />
+        <NewMessageForm chatRoomId={this.props.chatRoom.id} />
       </div>
     );
   };

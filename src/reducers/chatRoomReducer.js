@@ -14,6 +14,16 @@ export default function chatRoom(state = initialState, action) {
         isLoading: false,
         chatRoom: action.payload,
       };
+    case types.NEW_CHAT_SUBMITTING:
+      return {
+        ...state,
+        isSubmitting: true,
+      };
+    case types.NEW_CHAT_SUBMITTED:
+      return {
+        ...state,
+        isSubmitting: false,
+      };
     default:
       return state;
   }

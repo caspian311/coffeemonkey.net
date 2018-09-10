@@ -10,6 +10,22 @@ class TextInput extends Component {
     this.props.valueChanged(e.target.id, e.target.value);
   };
 
+  areaInput = () => {
+    return (
+      <textarea
+        id={this.props.id}
+        value={this.props.value || ""}
+        placeholder={this.props.withLabel ? undefined : this.props.placeholder}
+        onChange={e => {
+          this.valueChanged(e);
+        }}
+        onKeyUp={e => {
+          this.props.onChangeListener && this.props.onChangeListener(e);
+        }}
+      />
+    );
+  };
+
   textInput = () => {
     return (
       <input
@@ -56,7 +72,11 @@ class TextInput extends Component {
         {this.props.withLabel && (
           <label htmlFor={this.props.id}>{this.props.placeholder}</label>
         )}
-        {this.props.password ? this.passwordInput() : this.textInput()}
+        {this.props.area
+          ? this.areaInput()
+          : this.props.password
+            ? this.passwordInput()
+            : this.textInput()}
         {this.props.errorMessage && this.errorMessage()}
       </div>
     );
