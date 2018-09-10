@@ -1,0 +1,11 @@
+.chat-room .message {
+  border-bottom: 1px solid #000; }
+  .chat-room .message:last-child {
+    border: 0; }
+
+.chat-room .message-body {
+  display: block; }
+
+.chat-room .message-author {
+  display: block;
+  text-align: right; }

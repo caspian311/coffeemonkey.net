@@ -12,6 +12,7 @@ export default function chatRoom(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
+        chatRoom: action.payload,
       };
     default:
       return state;

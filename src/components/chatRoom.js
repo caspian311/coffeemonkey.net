@@ -16,7 +16,22 @@ class ChatRoom extends AdminPage {
   };
 
   chatRoom = () => {
-    return <h3>The Chat Room</h3>;
+    return (
+      <div>
+        <h3>{this.props.chatRoom.name}</h3>
+        {this.props.chatRoom.chatMessages.map(message => {
+          return (
+            <div className="message" key={message.id}>
+              <span className="message-body">{message.message}</span>
+              <span className="message-author">
+                by {message.user.firstName} {message.user.lastName}
+                &nbsp;on {message.createdAt}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
   adminContents() {
@@ -34,6 +49,7 @@ class ChatRoom extends AdminPage {
 function mapStateToProps(state) {
   return {
     isLoading: state.chatRoom.isLoading,
+    chatRoom: state.chatRoom.chatRoom,
   };
 }
 
