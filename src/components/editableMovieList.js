@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
-import * as adminActions from "../actions/adminActions";
+import * as movieManagementActions from "../actions/movieManagementActions";
 import * as movieActions from "../actions/movieActions";
 
 class EditableMovieList extends Component {
@@ -51,7 +51,7 @@ function mapDispatchToProps(dispatch) {
       movieActions.populateMovieList(dispatch);
     },
     deleteMovieDispatch(movieId) {
-      adminActions.deleteMovie(dispatch, movieId);
+      movieManagementActions.deleteMovie(dispatch, movieId);
     },
   };
 }

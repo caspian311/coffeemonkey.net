@@ -4,7 +4,7 @@ import "../css/avatar.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import React, { Component } from "react";
 
-import Admin from "./admin";
+import MovieManagement from "./movieManagement";
 import Banner from "./banner";
 import Login from "./login";
 import Notifications from "./notifications";
@@ -25,7 +25,7 @@ class App extends Component {
           <Route
             exact={true}
             path="/"
-            render={props => <Admin needsFooter={false} />}
+            render={props => <MovieManagement needsFooter={false} />}
           />
           <Route
             exact={true}
@@ -40,7 +40,7 @@ class App extends Component {
           <Route
             exact={true}
             path="/admin"
-            render={props => <Admin needsFooter={true} />}
+            render={props => <MovieManagement needsFooter={true} />}
           />
           <Route
             exact={true}

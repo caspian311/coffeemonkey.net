@@ -1,5 +1,4 @@
 import * as types from "./actionTypes";
-import * as adminApi from "../services/adminApi";
 import * as profileService from "../services/profileService";
 import * as notificationActions from "./notificationActions";
 
