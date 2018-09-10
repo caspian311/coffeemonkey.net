@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import React from "react";
 
 import AdminPage from "./adminPage";
-import * as chatRoomsActions from "../actions/chatRoomsActions";
+import * as chatRoomsActions from "../actions/chatRoomActions";
 
 class ChatRooms extends AdminPage {
   componentWillMount() {

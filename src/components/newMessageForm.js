@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import TextInput from "./textInput";
-import * as chatActions from "../actions/chatActions";
+import * as chatActions from "../actions/chatRoomActions";
 
 class NewMessageForm extends Component {
   handleSubmit = e => {

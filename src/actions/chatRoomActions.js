@@ -2,6 +2,18 @@ import * as chatService from "../services/chatService";
 import * as notificationActions from "../actions/notificationActions";
 import * as types from "../actions/actionTypes";
 
+export function loadRooms(dispatch) {
+  dispatch({ type: types.LOADING_CHAT_ROOMS });
+  chatService
+    .loadChatRooms()
+    .then(chatRooms => {
+      dispatch({ type: types.CHAT_ROOMS_LOADED, payload: chatRooms });
+    })
+    .catch(error => {
+      notificationActions.showErrorMessage(dispatch, error.message);
+    });
+}
+
 export function loadChatRoom(dispatch, chatRoomId) {
   dispatch({ type: types.LOADING_CHAT_ROOM });
   chatService
@@ -11,5 +23,26 @@ export function loadChatRoom(dispatch, chatRoomId) {
     })
     .catch(e => {
       notificationActions.showErrorMessage(dispatch, e.message);
+    });
+}
+
+export function newChatMessage(dispatch, chatRoomId, newMessage) {
+  dispatch({ type: types.NEW_CHAT_SUBMITTING });
+  chatService
+    .submitChatMessage(chatRoomId, newMessage)
+    .then(() => {
+      dispatch({
+        type: types.INPUT_VALUE_CHANGED,
+        payload: { id: "chat-new-message", value: "" },
+      });
+      dispatch({ type: types.NEW_CHAT_SUBMITTED });
+    })
+    .catch(e => {
+      notificationActions.showErrorMessage(dispatch, e.message);
+      dispatch({ type: types.NEW_CHAT_SUBMITTED });
+      dispatch({
+        type: types.INPUT_VALUE_CHANGED,
+        payload: { id: "chat-new-message", value: "" },
+      });
     });
 }
