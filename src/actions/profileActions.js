@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as adminApi from "../services/adminApi";
+import * as profileService from "../services/profileService";
 import * as notificationActions from "./notificationActions";
 
 export function selectAvatar(dispatch, selectedAvatar) {
@@ -8,7 +9,7 @@ export function selectAvatar(dispatch, selectedAvatar) {
 
 export function updateProfile(dispatch, profile) {
   dispatch({ type: types.FORM_SAVING });
-  adminApi
+  profileService
     .updateProfile(profile)
     .then(user => {
       dispatch({ type: types.PROFILE_SAVED, payload: { user } });
@@ -23,7 +24,7 @@ export function updateProfile(dispatch, profile) {
 }
 
 export function loadProfile(dispatch) {
-  adminApi
+  profileService
     .getProfile()
     .then(profile => {
       dispatch({
