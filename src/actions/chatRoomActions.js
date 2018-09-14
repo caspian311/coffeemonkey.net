@@ -14,8 +14,7 @@ export function loadRooms(dispatch) {
     });
 }
 
-export function loadChatRoom(dispatch, chatRoomId) {
-  dispatch({ type: types.LOADING_CHAT_ROOM });
+function gatherMessages(dispatch, chatRoomId) {
   chatService
     .loadChatRoom(chatRoomId)
     .then(chatRoom => {
@@ -24,6 +23,21 @@ export function loadChatRoom(dispatch, chatRoomId) {
     .catch(e => {
       notificationActions.showErrorMessage(dispatch, e.message);
     });
+}
+
+export function stopLoadingChat(roomIntervalId) {
+  clearInterval(roomIntervalId);
+}
+
+export function loadChatRoom(dispatch, chatRoomId) {
+  dispatch({ type: types.LOADING_CHAT_ROOM });
+
+  var roomIntervalId = setInterval(
+    () => gatherMessages(dispatch, chatRoomId),
+    1000
+  );
+
+  dispatch({ type: types.LOADING_INTERVAL_SET, payload: { roomIntervalId } });
 }
 
 export function newChatMessage(dispatch, chatRoomId, newMessage) {

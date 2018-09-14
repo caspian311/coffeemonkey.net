@@ -24,6 +24,11 @@ export default function chatRoom(state = initialState, action) {
         ...state,
         isSubmitting: false,
       };
+    case types.LOADING_INTERVAL_SET:
+      return {
+        ...state,
+        roomIntervalId: action.payload.roomIntervalId,
+      };
     default:
       return state;
   }

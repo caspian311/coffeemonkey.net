@@ -13,6 +13,10 @@ class ChatRoom extends AdminPage {
     this.props.loadChatRoom(this.props.chatRoomId);
   }
 
+  componentWillUnmount() {
+    this.props.stopLoadingChat(this.props.roomIntervalId);
+  }
+
   loadingScreen = () => {
     return <div>Loading...</div>;
   };
@@ -43,6 +47,7 @@ function mapStateToProps(state) {
   return {
     isLoading: state.chatRoom.isLoading,
     chatRoom: state.chatRoom.chatRoom,
+    roomIntervalId: state.chatRoom.roomIntervalId,
   };
 }
 
@@ -50,6 +55,9 @@ function mapDispatchToProps(dispatch) {
   return {
     loadChatRoom(chatRoomId) {
       chatRoomActions.loadChatRoom(dispatch, chatRoomId);
+    },
+    stopLoadingChat(roomIntervalId) {
+      chatRoomActions.stopLoadingChat(roomIntervalId);
     },
   };
 }
