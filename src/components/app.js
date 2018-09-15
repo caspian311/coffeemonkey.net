@@ -13,6 +13,7 @@ import Register from "./register";
 import SecondaryNavigation from "./secondaryNavigation";
 import ChatRooms from "./chatRooms";
 import ChatRoom from "./chatRoom";
+import UserAdmin from "./userAdmin";
 
 class App extends Component {
   render() {
@@ -46,6 +47,11 @@ class App extends Component {
             exact={true}
             path="/profile"
             render={props => <Profile needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/userAdmin"
+            render={props => <UserAdmin needsFooter={true} />}
           />
           <Route
             exact={true}

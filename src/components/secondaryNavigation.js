@@ -29,6 +29,7 @@ class SecondaryNavigation extends Component {
     const navigation = [
       { title: "Movie Administration", path: "/admin" },
       { title: "Chat Rooms", path: "/chatRooms" },
+      { title: "User Admin", path: "/userAdmin" },
     ];
 
     return (
