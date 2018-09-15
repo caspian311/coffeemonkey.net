@@ -11,3 +11,7 @@ export async function loadUsers(dispatch) {
     notificationActions.showErrorMessage(dispatch, e.message);
   }
 }
+
+export async function deleteUser(dispatch, userId) {
+  console.log("delete user: ", userId);
+}

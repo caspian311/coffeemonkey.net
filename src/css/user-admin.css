@@ -1,2 +1,28 @@
 .user-admin {
   padding: 10px; }
+  .user-admin #users-table {
+    width: 100%;
+    border: 1px solid #000;
+    border-spacing: 0; }
+    .user-admin #users-table thead {
+      background: #fff; }
+      .user-admin #users-table thead td {
+        border-bottom: solid 1px #000;
+        text-align: left;
+        padding: 5px;
+        font-weight: 600; }
+    .user-admin #users-table td {
+      padding: 5px; }
+    .user-admin #users-table tr {
+      background: #fff; }
+      .user-admin #users-table tr.alt {
+        background: #CCC; }
+    .user-admin #users-table button {
+      clear: both;
+      margin: 0;
+      text-transform: none;
+      min-width: 30px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 5px; }

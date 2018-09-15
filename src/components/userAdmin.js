@@ -13,13 +13,23 @@ class UserAdmin extends AdminPage {
     this.props.loadUsers();
   }
 
-  buildUserItem(user) {
+  deleteUser = userId => {
+    this.props.deleteUser(userId);
+  };
+
+  buildUserItem = (user, index) => {
     return (
-      <li>
-        {user.lastName}, {user.firstName}
-      </li>
+      <tr className={index % 2 === 1 ? "alt" : ""} key={index}>
+        <td>{user.username}</td>
+        <td>{user.lastName}</td>
+        <td>{user.firstName}</td>
+        <td />
+        <td>
+          <button onClick={() => this.deleteUser(user.id)}>X</button>
+        </td>
+      </tr>
     );
-  }
+  };
 
   adminContents() {
     return (
@@ -28,7 +38,18 @@ class UserAdmin extends AdminPage {
         <div className={("content", "user-admin")}>
           <h3>Users</h3>
 
-          <ul>{this.props.userList.map(this.buildUserItem)}</ul>
+          <table id="users-table">
+            <thead>
+              <tr>
+                <td>Username</td>
+                <td>Last name</td>
+                <td>First name</td>
+                <td>Last login time</td>
+                <td />
+              </tr>
+            </thead>
+            <tbody>{this.props.userList.map(this.buildUserItem)}</tbody>
+          </table>
         </div>
       </div>
     );
@@ -45,6 +66,9 @@ function mapDispatchToProps(dispatch) {
   return {
     loadUsers() {
       userAdminActions.loadUsers(dispatch);
+    },
+    deleteUser(userId) {
+      userAdminActions.deleteUser(dispatch, userId);
     },
   };
 }
