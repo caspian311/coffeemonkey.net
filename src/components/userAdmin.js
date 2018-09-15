@@ -23,9 +23,14 @@ class UserAdmin extends AdminPage {
         <td>{user.username}</td>
         <td>{user.lastName}</td>
         <td>{user.firstName}</td>
-        <td />
+        <td>{user.lastLogin}</td>
         <td>
-          <button onClick={() => this.deleteUser(user.id)}>X</button>
+          <button
+            disabled={this.props.disabledUserButtons[user.id] === true}
+            onClick={() => this.deleteUser(user.id)}
+          >
+            X
+          </button>
         </td>
       </tr>
     );
@@ -44,7 +49,7 @@ class UserAdmin extends AdminPage {
                 <td>Username</td>
                 <td>Last name</td>
                 <td>First name</td>
-                <td>Last login time</td>
+                <td>Last login</td>
                 <td />
               </tr>
             </thead>
@@ -59,6 +64,7 @@ class UserAdmin extends AdminPage {
 function mapStateToProps(state) {
   return {
     userList: state.userAdmin.userList,
+    disabledUserButtons: state.userAdmin.disabledUserButtons,
   };
 }
 

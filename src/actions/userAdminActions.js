@@ -13,5 +13,11 @@ export async function loadUsers(dispatch) {
 }
 
 export async function deleteUser(dispatch, userId) {
-  console.log("delete user: ", userId);
+  try {
+    dispatch({ type: types.USER_DELETING, payload: userId });
+    await userService.deleteUser(userId);
+    dispatch({ type: types.USER_DELETED });
+  } catch (e) {
+    notificationActions.showErrorMessage(dispatch, e.message);
+  }
 }

@@ -25,4 +25,7 @@
       width: 30px;
       height: 30px;
       text-align: center;
-      line-height: 5px; }
+      line-height: 5px;
+      background: #fff; }
+      .user-admin #users-table button:disabled {
+        background: #CCC; }

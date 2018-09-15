@@ -9,3 +9,7 @@ export function removeUser(userId) {
 export function fetchUsers() {
   return adminApi.fetchAdminCall(`${usersUrl}`);
 }
+
+export function deleteUser(userId) {
+  return adminApi.deleteAdminCall(`${usersUrl}/${userId}`);
+}

@@ -14,6 +14,13 @@ export default function userAdmin(state = initialState, action) {
         isLoading: false,
         userList: action.payload,
       };
+    case types.USER_DELETED:
+      const disabledUserButtons = {};
+      disabledUserButtons[action.payload] = true;
+      return {
+        ...state,
+        disabledUserButtons: disabledUserButtons,
+      };
     default:
       return state;
   }
