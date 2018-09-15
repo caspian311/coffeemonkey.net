@@ -3,24 +3,22 @@ import * as loginService from "../services/loginService";
 import * as auth from "../services/auth";
 import * as notificationActions from "./notificationActions";
 
-export function login(dispatch, username, password) {
-  loginService
-    .login(username, password)
-    .then(user => {
-      auth.setSession(user);
-      dispatch({ type: types.LOGIN, payload: { user } });
-      dispatch({
-        type: types.INPUT_VALUE_CHANGED,
-        payload: { id: "login-username", value: "" },
-      });
-      dispatch({
-        type: types.INPUT_VALUE_CHANGED,
-        payload: { id: "login-password", value: "" },
-      });
-    })
-    .catch(e => {
-      notificationActions.showErrorMessage(dispatch, e.message);
+export async function login(dispatch, username, password) {
+  try {
+    const user = await loginService.login(username, password);
+    auth.setSession(user);
+    dispatch({ type: types.LOGIN, payload: { user } });
+    dispatch({
+      type: types.INPUT_VALUE_CHANGED,
+      payload: { id: "login-username", value: "" },
     });
+    dispatch({
+      type: types.INPUT_VALUE_CHANGED,
+      payload: { id: "login-password", value: "" },
+    });
+  } catch (e) {
+    notificationActions.showErrorMessage(dispatch, e.message);
+  }
 }
 
 export function logout(dispatch) {

@@ -8,7 +8,7 @@ import AdminPage from "./adminPage";
 import EditableMovieList from "./editableMovieList";
 import MovieList from "./movieList";
 
-class Admin extends AdminPage {
+class MovieManagement extends AdminPage {
   adminView = () => {
     return (
       <div className="content">
@@ -55,4 +55,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Admin);
+)(MovieManagement);

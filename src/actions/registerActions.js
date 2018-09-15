@@ -2,17 +2,26 @@ import * as types from "./actionTypes";
 import * as registerService from "../services/registerService";
 import * as notificationActions from "./notificationActions";
 
-export function register(dispatch, firstName, lastName, username, password) {
+export async function register(
+  dispatch,
+  firstName,
+  lastName,
+  username,
+  password
+) {
   dispatch({ type: types.REGISTER_FORM_INVALID });
-  registerService
-    .register({ firstName, lastName, username, password })
-    .then(user => {
-      clearRegisterForm(dispatch);
-      dispatch({ type: types.REGISTRATION_SUCCESSFUL });
-    })
-    .catch(e => {
-      notificationActions.showErrorMessage(dispatch, e.message);
+  try {
+    await registerService.register({
+      firstName,
+      lastName,
+      username,
+      password,
     });
+    clearRegisterForm(dispatch);
+    dispatch({ type: types.REGISTRATION_SUCCESSFUL });
+  } catch (e) {
+    notificationActions.showErrorMessage(dispatch, e.message);
+  }
 }
 
 export function clearRegisterForm(dispatch) {
@@ -29,19 +38,17 @@ export function clearRegisterForm(dispatch) {
   });
 }
 
-export function checkAvailabilityOfUsername(dispatch, username) {
-  registerService
-    .checkAvailabilityOfUsername(username)
-    .then(() => {
-      dispatch({
-        type: types.USERNAME_AVAILABLE,
-      });
-    })
-    .catch(e => {
-      dispatch({
-        type: types.USERNAME_UNAVAILABLE,
-      });
+export async function checkAvailabilityOfUsername(dispatch, username) {
+  try {
+    await registerService.checkAvailabilityOfUsername(username);
+    dispatch({
+      type: types.USERNAME_AVAILABLE,
     });
+  } catch (e) {
+    dispatch({
+      type: types.USERNAME_UNAVAILABLE,
+    });
+  }
 }
 
 export function evaluateForm(

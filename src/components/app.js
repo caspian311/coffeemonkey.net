@@ -4,13 +4,15 @@ import "../css/avatar.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import React, { Component } from "react";
 
-import Admin from "./admin";
+import MovieManagement from "./movieManagement";
 import Banner from "./banner";
 import Login from "./login";
 import Notifications from "./notifications";
 import Profile from "./profile";
 import Register from "./register";
 import SecondaryNavigation from "./secondaryNavigation";
+import ChatRooms from "./chatRooms";
+import ChatRoom from "./chatRoom";
 
 class App extends Component {
   render() {
@@ -23,7 +25,7 @@ class App extends Component {
           <Route
             exact={true}
             path="/"
-            render={props => <Admin needsFooter={false} />}
+            render={props => <MovieManagement needsFooter={false} />}
           />
           <Route
             exact={true}
@@ -38,12 +40,27 @@ class App extends Component {
           <Route
             exact={true}
             path="/admin"
-            render={props => <Admin needsFooter={true} />}
+            render={props => <MovieManagement needsFooter={true} />}
           />
           <Route
             exact={true}
             path="/profile"
             render={props => <Profile needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/chatRooms"
+            render={props => <ChatRooms needsFooter={true} />}
+          />
+          <Route
+            exact={true}
+            path="/chatRooms/:chatRoomId"
+            render={props => (
+              <ChatRoom
+                needsFooter={true}
+                chatRoomId={props.match.params.chatRoomId}
+              />
+            )}
           />
         </div>
       </Router>

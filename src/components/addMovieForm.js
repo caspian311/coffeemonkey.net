@@ -3,7 +3,7 @@ import "../css/forms.css";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
-import * as adminActions from "../actions/adminActions";
+import * as movieManagementActions from "../actions/movieManagementActions";
 
 class AddMovieForm extends Component {
   constructor(props) {
@@ -70,13 +70,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     newTitleChangeDispatch(newTitle) {
-      adminActions.newTitleChanged(dispatch, newTitle);
+      movieManagementActions.newTitleChanged(dispatch, newTitle);
     },
     newYearChangeDispatch(newYear) {
-      adminActions.newYearChanged(dispatch, newYear);
+      movieManagementActions.newYearChanged(dispatch, newYear);
     },
     addNewMovieDispatch(newTitle, newYear) {
-      adminActions.addNewMovie(dispatch, newTitle, newYear);
+      movieManagementActions.addNewMovie(dispatch, newTitle, newYear);
     },
   };
 }
