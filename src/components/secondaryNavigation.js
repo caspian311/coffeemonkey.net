@@ -13,20 +13,27 @@ class SecondaryNavigation extends Component {
     return "/chatRooms";
   };
 
+  buildNavItem(nav) {
+    return (
+      <li>
+        <Link to={nav.path}>{nav.title}</Link>
+      </li>
+    );
+  }
+
   render() {
     if (!this.props.isLoggedIn) {
       return <div />;
     }
+
+    const navigation = [
+      { title: "Movie Administration", path: "/admin" },
+      { title: "Chat Rooms", path: "/chatRooms" },
+    ];
+
     return (
       <div className="secondary-navigation">
-        <ul>
-          <li>
-            <Link to={this.movieAdminPath()}>Movie Administration</Link>
-          </li>
-          <li>
-            <Link to={this.chatRoomsPath()}>Chat Rooms</Link>
-          </li>
-        </ul>
+        <ul>{navigation.map(this.buildNavItem)}</ul>
       </div>
     );
   }
