@@ -17,6 +17,11 @@ export async function deleteUser(dispatch, userId) {
     dispatch({ type: types.USER_DELETING, payload: userId });
     await userService.deleteUser(userId);
     dispatch({ type: types.USER_DELETED });
+    notificationActions.showSuccessMessage(
+      dispatch,
+      "User successfully deleted."
+    );
+    loadUsers(dispatch);
   } catch (e) {
     notificationActions.showErrorMessage(dispatch, e.message);
   }
