@@ -13,9 +13,9 @@ class SecondaryNavigation extends Component {
     return "/chatRooms";
   };
 
-  buildNavItem(nav) {
+  buildNavItem(nav, index) {
     return (
-      <li>
+      <li key={index}>
         <Link to={nav.path}>{nav.title}</Link>
       </li>
     );
@@ -29,6 +29,7 @@ class SecondaryNavigation extends Component {
     const navigation = [
       { title: "Movie Administration", path: "/admin" },
       { title: "Chat Rooms", path: "/chatRooms" },
+      { title: "User Admin", path: "/userAdmin" },
     ];
 
     return (

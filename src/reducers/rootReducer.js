@@ -8,6 +8,7 @@ import textInput from "./textInputReducer";
 import notifications from "./notificationsReducer";
 import chatRooms from "./chatRoomsReducer";
 import chatRoom from "./chatRoomReducer";
+import userAdmin from "./userAdminReducer";
 
 const rootReducer = combineReducers({
   login,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   notifications,
   chatRooms,
   chatRoom,
+  userAdmin,
 });
 
 export default rootReducer;
