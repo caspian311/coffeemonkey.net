@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import Greeting from "./greeting";
+import images from "./images";
 
 class Banner extends Component {
   homePath = () => {
@@ -20,7 +21,7 @@ class Banner extends Component {
       <div className="banner">
         <div className="logo">
           <Link to={this.homePath()}>
-            <img src="images/coffee_logo.png" alt="Logo" />
+            <img src={images.logo} alt="Logo" />
             <h1 className="title">Coffee Monkey!</h1>
           </Link>
         </div>
