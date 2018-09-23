@@ -41,8 +41,6 @@ class UserAdmin extends AdminPage {
       <div className="container">
         <h3 className="container-title">User Administration</h3>
         <div className={("content", "user-admin")}>
-          <h3>Users</h3>
-
           <table id="users-table">
             <thead>
               <tr>

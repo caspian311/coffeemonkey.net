@@ -32,20 +32,3 @@ table {
     border: 0; }
     table button:disabled {
       background: #CCC; }
-
-.admin-movie form {
-  margin: 10px auto; }
-  .admin-movie form input {
-    display: inline; }
-    .admin-movie form input.title {
-      margin-right: 10px;
-      width: 250px; }
-      @media (max-width: 400px) {
-        .admin-movie form input.title {
-          width: 212px; } }
-    .admin-movie form input.year {
-      margin-right: 10px;
-      width: 108px; }
-      @media (max-width: 400px) {
-        .admin-movie form input.year {
-          width: 212px; } }

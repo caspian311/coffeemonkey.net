@@ -19,21 +19,31 @@ class EditableMovieList extends Component {
     }
 
     return (
-      <ul>
-        {this.props.movies &&
-          this.props.movies.map((movie, index) => {
-            return (
-              <li key={index} className={this.classNameFromIndex(index)}>
-                <span>
-                  {movie.title} ({movie.releaseDate})
-                </span>
-                <a href="#blah" onClick={() => this.deleteMovie(movie.id)}>
-                  X
-                </a>
-              </li>
-            );
-          })}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <td>Title</td>
+            <td />
+          </tr>
+        </thead>
+        <tbody>
+          {this.props.movies &&
+            this.props.movies.map((movie, index) => {
+              return (
+                <tr key={index} className={this.classNameFromIndex(index)}>
+                  <td>
+                    {movie.title} ({movie.releaseDate})
+                  </td>
+                  <td>
+                    <button onClick={() => this.deleteMovie(movie.id)}>
+                      X
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     );
   }
 }
