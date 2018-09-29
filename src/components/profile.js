@@ -57,12 +57,14 @@ class Profile extends AdminPage {
 
             <ProfileAvatarSelector />
 
-            <input
-              type="submit"
-              value="Save Changes"
-              disabled={this.props.shouldDisableSubmit}
-            />
-            <button onClick={this.cancel}>Cancel</button>
+            <div className="button-bar">
+              <button onClick={this.cancel}>Cancel</button>
+              <input
+                type="submit"
+                value="Save Changes"
+                disabled={this.props.shouldDisableSubmit}
+              />
+            </div>
           </form>
         </div>
       </div>

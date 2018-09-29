@@ -35,7 +35,10 @@ class EditableMovieList extends Component {
                     {movie.title} ({movie.releaseDate})
                   </td>
                   <td>
-                    <button onClick={() => this.deleteMovie(movie.id)}>
+                    <button
+                      className="transparent"
+                      onClick={() => this.deleteMovie(movie.id)}
+                    >
                       X
                     </button>
                   </td>

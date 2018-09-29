@@ -88,12 +88,15 @@ class Register extends AppPage {
               password="true"
               onChangeListener={this.evaluateForm}
             />
-            <input
-              type="submit"
-              value="Register"
-              disabled={this.props.canRegister === false}
-            />
-            <button onClick={this.cancelRegistration}>Cancel</button>
+
+            <div className="button-bar">
+              <button onClick={this.cancelRegistration}>Cancel</button>
+              <input
+                type="submit"
+                value="Register"
+                disabled={this.props.canRegister === false}
+              />
+            </div>
           </form>
         </div>
       </div>

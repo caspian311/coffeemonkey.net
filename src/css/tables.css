@@ -17,9 +17,9 @@ table {
       background: #fff; }
     table tr.alt {
       background: #F2DAA5; }
-      table tr.alt button {
+      table tr.alt button.transparent {
         background: #F2DAA5; }
-  table button {
+  table button.transparent {
     clear: both;
     margin: 0;
     text-transform: none;
@@ -30,5 +30,5 @@ table {
     line-height: 5px;
     background: #fff;
     border: 0; }
-    table button:disabled {
+    table button.transparent:disabled {
       background: #CCC; }

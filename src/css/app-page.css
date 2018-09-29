@@ -1,7 +1,7 @@
 .main {
   min-height: calc(100vh - 60px - 50px - 10px);
   margin: 20px auto 0 auto;
-  max-width: 500px; }
+  max-width: 760px; }
   @media (max-width: 768px) {
     .main {
       max-width: 100%; } }

@@ -26,6 +26,7 @@ class UserAdmin extends AdminPage {
         <td>{user.lastLogin}</td>
         <td>
           <button
+            className="transparent"
             disabled={this.props.disabledUserButtons[user.id] === true}
             onClick={() => this.deleteUser(user.id)}
           >

@@ -22,15 +22,30 @@ class ChatRooms extends AdminPage {
 
   chatRoomsListings = () => {
     return (
-      <ul>
-        {this.props.chatRooms.map(room => {
+      <table>
+        <thead>
+          <tr>
+            <td>Room name</td>
+            <td>Number of participants</td>
+            <td>Last update</td>
+            <td />
+          </tr>
+        </thead>
+        {this.props.chatRooms.map((room, index) => {
           return (
-            <li key={room.id}>
-              <Link to={this.linkToRoom(room.id)}>{room.name}</Link>
-            </li>
+            <tr key={room.id} className={index % 2 === 0 ? "" : "alt"}>
+              <td>
+                <Link to={this.linkToRoom(room.id)}>{room.name}</Link>
+              </td>
+              <td>{room.numberOfParticipants}</td>
+              <td>{room.lastUpdated}</td>
+              <td>
+                <button>Join room</button>
+              </td>
+            </tr>
           );
         })}
-      </ul>
+      </table>
     );
   };
 
@@ -39,7 +54,6 @@ class ChatRooms extends AdminPage {
       <div className="container chat-rooms">
         <h3 className="container-title">Chat Rooms</h3>
         <div className="content">
-          <h3>Select a chat room to join...</h3>
           {this.props.isLoadingChatRooms
             ? this.loadingScreen()
             : this.chatRoomsListings()}

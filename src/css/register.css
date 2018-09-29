@@ -3,8 +3,6 @@
   content: '';
   display: block; }
 
-.register form input {
+.register form input[type=text],
+.register form input[type=password] {
   display: block; }
-  .register form input[type=submit], .register form input[type=button] {
-    float: right;
-    min-width: 150px; }

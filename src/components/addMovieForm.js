@@ -51,7 +51,7 @@ class AddMovieForm extends Component {
           onChange={this.newYearChanged}
           value={this.props.newYear}
         />
-        <input type="button" value="Add" onClick={this.addMovieClick} />
+        <button onClick={this.addMovieClick}>Add</button>
         {this.errorMessage()}
       </form>
     );

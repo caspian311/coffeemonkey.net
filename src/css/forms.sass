@@ -1,28 +1,20 @@
 @import './common.sass'
 
-input
-  &[type=submit],
-  &[type=button]
-    float: right
-    margin: 10px 10px 10px 0
-    min-width: 150px
-    font-size: 16px
-    background: $bright-orange
-    text-transform: uppercase
-    &:disabled
-      background: $disabled-background-color
-      color: $disabled-foreground-color
-      border-color: $disabled-foreground-color
-
-button
-  float: right
-  margin: 10px 10px 10px 0
+button, input[type=submit]
+  min-width: 150px
+  font-size: 16px
+  background: $bright-orange
   text-transform: uppercase
+  margin-left: 10px
   min-width: 150px
   font-size: 16px
   border-radius: 2px
   border: solid 1px $dark-brown
   padding: 10px
+  &:disabled
+    background: $disabled-background-color
+    color: $disabled-foreground-color
+    border-color: $disabled-foreground-color
 
 select
   margin: 10px 10px 10px 0
@@ -32,3 +24,6 @@ select
   border-radius: 2px
   border: solid 1px $dark-brown
   padding: 10px
+
+.button-bar
+  float: right
