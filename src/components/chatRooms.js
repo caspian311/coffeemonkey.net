@@ -1,6 +1,6 @@
 import "../css/chat-rooms.css";
 
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import React from "react";
 
@@ -16,8 +16,8 @@ class ChatRooms extends AdminPage {
     return <div>Loading...</div>;
   };
 
-  linkToRoom = id => {
-    return `/chatRooms/${id}`;
+  joinRoom = roomId => {
+    this.props.history.push(`/chatRooms/${roomId}`);
   };
 
   chatRoomsListings = () => {
@@ -34,13 +34,13 @@ class ChatRooms extends AdminPage {
         {this.props.chatRooms.map((room, index) => {
           return (
             <tr key={room.id} className={index % 2 === 0 ? "" : "alt"}>
-              <td>
-                <Link to={this.linkToRoom(room.id)}>{room.name}</Link>
-              </td>
+              <td>{room.name}</td>
               <td>{room.numberOfParticipants}</td>
               <td>{room.lastUpdated}</td>
               <td>
-                <button>Join room</button>
+                <button onClick={() => this.joinRoom(room.id)}>
+                  Join room
+                </button>
               </td>
             </tr>
           );
@@ -78,7 +78,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChatRooms);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ChatRooms)
+);

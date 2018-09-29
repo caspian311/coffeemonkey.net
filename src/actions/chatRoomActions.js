@@ -25,15 +25,20 @@ export function stopLoadingChat(roomIntervalId) {
   clearInterval(roomIntervalId);
 }
 
-export function loadChatRoom(dispatch, chatRoomId) {
+export async function loadChatRoom(dispatch, chatRoomId) {
   dispatch({ type: types.LOADING_CHAT_ROOM });
+  try {
+    await chatService.joinChatRoom(chatRoomId);
 
-  var roomIntervalId = setInterval(
-    () => gatherMessages(dispatch, chatRoomId),
-    1000
-  );
+    var roomIntervalId = setInterval(
+      () => gatherMessages(dispatch, chatRoomId),
+      1000
+    );
 
-  dispatch({ type: types.LOADING_INTERVAL_SET, payload: { roomIntervalId } });
+    dispatch({ type: types.LOADING_INTERVAL_SET, payload: { roomIntervalId } });
+  } catch (error) {
+    notificationActions.showErrorMessage(dispatch, error.message);
+  }
 }
 
 export async function newChatMessage(dispatch, chatRoomId, newMessage) {

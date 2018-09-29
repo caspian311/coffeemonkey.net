@@ -27,7 +27,13 @@ class NewMessageForm extends Component {
           area={true}
           value={this.props.newMessage}
         />
-        <input type="submit" value="Post" disabled={this.props.isSubmitting} />
+        <div className="button-bar">
+          <input
+            type="submit"
+            value="Post"
+            disabled={this.props.isSubmitting}
+          />
+        </div>
       </form>
     );
   }

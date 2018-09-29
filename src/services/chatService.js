@@ -2,6 +2,10 @@ import * as adminApi from "./adminApi";
 
 const chatRoomsUrl = `${adminApi.getBaseUrl()}/chatRooms`;
 
+export function joinChatRoom(chatRoomId) {
+  return adminApi.postAdminCall(`${chatRoomsUrl}/${chatRoomId}/membership`, {});
+}
+
 export function loadChatRooms() {
   return adminApi.fetchAdminCall(chatRoomsUrl);
 }
